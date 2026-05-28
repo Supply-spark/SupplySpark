@@ -47,6 +47,19 @@
       z-index: 10;
     }
 
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
     nav h2 {
       font-size: 24px;
     }
@@ -144,7 +157,10 @@
 
 <body>
   <nav>
-    <h2>SupplySpark</h2>
+    <div class="nav-logo">
+      <img src="logo.png" alt="SupplySpark Logo" />
+      <h2>SupplySpark</h2>
+    </div>
     <div>
       <a href="#mission">Mission</a>
       <a href="#process">Process</a>
@@ -182,17 +198,14 @@
         <h3>1. Community Donations</h3>
         <p>We collect school supplies and financial donations from individuals, businesses, and local organizations.</p>
       </div>
-
       <div class="card">
         <h3>2. Organizing Supplies</h3>
         <p>Volunteers sort, package, and prepare supplies for distribution.</p>
       </div>
-
       <div class="card">
         <h3>3. Partnering With Organizations</h3>
         <p>We work with foster agencies, schools, shelters, and community groups to identify students in need.</p>
       </div>
-
       <div class="card">
         <h3>4. Delivering Supplies</h3>
         <p>Supplies are distributed directly to foster children before and during the school year.</p>
@@ -207,7 +220,6 @@
         Although SupplySpark is just getting started, our goal is to make a lasting difference in the
         lives of foster children through education support and community involvement.
       </p>
-
       <ul>
         <li>Donating hundreds of supplies each year</li>
         <li>Expanding partnerships with local schools and foster organizations</li>
@@ -224,12 +236,10 @@
         <h3>Donate Supplies</h3>
         <p>Contribute notebooks, backpacks, pencils, calculators, and other school supplies.</p>
       </div>
-
       <div class="card">
         <h3>Make a Financial Donation</h3>
         <p>Monetary donations help us purchase additional supplies and expand our reach.</p>
       </div>
-
       <div class="card">
         <h3>Volunteer</h3>
         <p>Help organize donation drives, sort supplies, and assist with community events.</p>
@@ -244,23 +254,28 @@
       the school supplies they need to succeed. Their goal is to build a strong community effort that
       gives foster children the tools and encouragement they deserve.
     </p>
+
+    <br />
+
+    <h2>Head of Technology</h2>
+    <p>
+      Our technology team is led by Braydon Gunawan and Arrick Hong, who work to build and maintain
+      SupplySpark's digital presence and ensure our mission reaches as many people as possible.
+    </p>
   </section>
 
   <section>
     <h2>FAQ</h2>
-
     <div class="card">
       <h3>Who does SupplySpark help?</h3>
       <p>SupplySpark supports foster children and students in need by providing school supplies.</p>
     </div>
     <br />
-
     <div class="card">
       <h3>How can I donate?</h3>
       <p>You can donate school supplies, make a financial contribution, or volunteer your time.</p>
     </div>
     <br />
-
     <div class="card">
       <h3>Are donated supplies required to be new?</h3>
       <p>No. New or lightly used items in good condition are welcome.</p>
