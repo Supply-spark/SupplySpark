@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SupplySpark</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f8fafc;
+      color: #111827;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #facc15, #93c5fd);
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 56px;
+      margin-bottom: 20px;
+    }
+
+    header p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 20px;
+    }
+
+    nav {
+      background: white;
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      z-index: 10;
+    }
+
+    nav h2 {
+      font-size: 24px;
+    }
+
+    nav a {
+      margin-left: 24px;
+      color: #111827;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 70px 20px;
+    }
+
+    h2 {
+      font-size: 38px;
+      margin-bottom: 24px;
+    }
+
+    h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 28px;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    .highlight {
+      background: #111827;
+      color: white;
+      border-radius: 28px;
+      padding: 50px;
+    }
+
+    ul {
+      margin-left: 24px;
+      margin-top: 16px;
+    }
+
+    .cta {
+      background: #facc15;
+      text-align: center;
+      border-radius: 28px;
+      padding: 50px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 14px 28px;
+      background: #111827;
+      color: white;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    @media (max-width: 700px) {
+      header h1 {
+        font-size: 42px;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav a {
+        margin: 0 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <h2>SupplySpark</h2>
+    <div>
+      <a href="#mission">Mission</a>
+      <a href="#process">Process</a>
+      <a href="#impact">Impact</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Helping Every Student Walk In Prepared</h1>
+    <p>
+      SupplySpark is a student-led nonprofit that provides school supplies to foster children in need,
+      helping every student feel prepared, confident, and ready to succeed.
+    </p>
+    <a class="button" href="#contact">Get Involved</a>
+  </header>
+
+  <section id="mission">
+    <h2>Our Mission</h2>
+    <p>
+      Our mission is to support foster children by providing essential school supplies that help them
+      succeed academically and feel confident in the classroom.
+    </p>
+    <br />
+    <p>
+      We aim to create equal opportunities for foster students by ensuring every child has access to
+      the tools they need to learn, grow, and reach their full potential.
+    </p>
+  </section>
+
+  <section id="process">
+    <h2>Our Process</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>1. Community Donations</h3>
+        <p>We collect school supplies and financial donations from individuals, businesses, and local organizations.</p>
+      </div>
+
+      <div class="card">
+        <h3>2. Organizing Supplies</h3>
+        <p>Volunteers sort, package, and prepare supplies for distribution.</p>
+      </div>
+
+      <div class="card">
+        <h3>3. Partnering With Organizations</h3>
+        <p>We work with foster agencies, schools, shelters, and community groups to identify students in need.</p>
+      </div>
+
+      <div class="card">
+        <h3>4. Delivering Supplies</h3>
+        <p>Supplies are distributed directly to foster children before and during the school year.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="impact">
+    <div class="highlight">
+      <h2>Our Impact</h2>
+      <p>
+        Although SupplySpark is just getting started, our goal is to make a lasting difference in the
+        lives of foster children through education support and community involvement.
+      </p>
+
+      <ul>
+        <li>Donating hundreds of supplies each year</li>
+        <li>Expanding partnerships with local schools and foster organizations</li>
+        <li>Hosting annual school supply drives</li>
+        <li>Building long-term support programs for students</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Getting Involved</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Donate Supplies</h3>
+        <p>Contribute notebooks, backpacks, pencils, calculators, and other school supplies.</p>
+      </div>
+
+      <div class="card">
+        <h3>Make a Financial Donation</h3>
+        <p>Monetary donations help us purchase additional supplies and expand our reach.</p>
+      </div>
+
+      <div class="card">
+        <h3>Volunteer</h3>
+        <p>Help organize donation drives, sort supplies, and assist with community events.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>About the Founders</h2>
+    <p>
+      SupplySpark was started by Byron Chen and Owen Huang to help foster children gain access to
+      the school supplies they need to succeed. Their goal is to build a strong community effort that
+      gives foster children the tools and encouragement they deserve.
+    </p>
+  </section>
+
+  <section>
+    <h2>FAQ</h2>
+
+    <div class="card">
+      <h3>Who does SupplySpark help?</h3>
+      <p>SupplySpark supports foster children and students in need by providing school supplies.</p>
+    </div>
+    <br />
+
+    <div class="card">
+      <h3>How can I donate?</h3>
+      <p>You can donate school supplies, make a financial contribution, or volunteer your time.</p>
+    </div>
+    <br />
+
+    <div class="card">
+      <h3>Are donated supplies required to be new?</h3>
+      <p>No. New or lightly used items in good condition are welcome.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="cta">
+      <h2>Contact Us</h2>
+      <p>Email: <strong>supplyspark.org@gmail.com</strong></p>
+      <p>Instagram: <strong>@supply.spark</strong></p>
+      <a class="button" href="mailto:supplyspark.org@gmail.com">Email Us</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 SupplySpark. Helping students start the school year with confidence.</p>
+  </footer>
+</body>
+</html>
