@@ -4,35 +4,128 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SupplySpark</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Work Sans', Arial, sans-serif;
+    }
+
+    :root {
+      --yellow: #facc15;
+      --blue: #93c5fd;
+      --ink: #111827;
+      --paper: #f8fafc;
     }
 
     body {
-      background: #f8fafc;
-      color: #111827;
+      background: var(--paper);
+      color: var(--ink);
       line-height: 1.6;
     }
 
+    h1, h2, h3 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 600;
+    }
+
+    p {
+      max-width: 65ch;
+    }
+
     header {
-      background: linear-gradient(135deg, #facc15, #93c5fd);
-      padding: 80px 20px;
+      background: linear-gradient(135deg, var(--yellow), var(--blue));
+      padding: 70px 20px 90px;
       text-align: center;
+      position: relative;
     }
 
     header h1 {
       font-size: 56px;
       margin-bottom: 20px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     header p {
-      max-width: 700px;
+      max-width: 62ch;
       margin: auto;
       font-size: 20px;
+    }
+
+    .hero-buttons {
+      margin-top: 28px;
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Hero image carousel */
+    .hero-carousel {
+      max-width: 820px;
+      margin: 46px auto 0;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.18);
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #111827;
+    }
+
+    .hero-carousel .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.9s ease;
+    }
+
+    .hero-carousel .slide.active {
+      opacity: 1;
+    }
+
+    .hero-carousel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-carousel .caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 18px 22px;
+      background: linear-gradient(to top, rgba(17,24,39,0.85), transparent);
+      color: white;
+      text-align: left;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .hero-carousel .dots {
+      position: absolute;
+      bottom: 14px;
+      right: 18px;
+      display: flex;
+      gap: 6px;
+    }
+
+    .hero-carousel .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+    }
+
+    .hero-carousel .dot.active {
+      background: white;
     }
 
     nav {
@@ -45,30 +138,56 @@
       top: 0;
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
       z-index: 10;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .nav-logo img {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      object-fit: cover;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
     nav h2 {
       font-size: 24px;
     }
 
-    nav a {
-      margin-left: 24px;
-      color: #111827;
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    nav a.nav-link {
+      color: var(--ink);
       text-decoration: none;
       font-weight: bold;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      color: var(--ink);
+      transition: background 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      background: var(--yellow);
+    }
+
+    .social-icons svg {
+      width: 17px;
+      height: 17px;
     }
 
     section {
@@ -101,6 +220,23 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     }
 
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #fef9c3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .card-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--ink);
+    }
+
     .highlight {
       background: #111827;
       color: white;
@@ -108,61 +244,163 @@
       padding: 50px;
     }
 
+    .highlight p {
+      max-width: 65ch;
+    }
+
+    /* Impact / progress split layout */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .impact-photo {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+    }
+
+    .impact-photo img {
+      width: 100%;
+      display: block;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 16px;
+      padding: 18px 14px;
+      text-align: center;
+    }
+
+    .stat .num {
+      font-family: 'Fraunces', serif;
+      font-size: 34px;
+      font-weight: 600;
+      color: var(--yellow);
+      display: block;
+    }
+
+    .stat .label {
+      font-size: 13px;
+      color: #cbd5e1;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 800px) {
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     ul {
       margin-left: 24px;
       margin-top: 16px;
     }
 
+    .donation-note {
+      margin-top: 18px;
+      padding: 18px 22px;
+      background: #fefce8;
+      border-left: 4px solid var(--yellow);
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
     .cta {
-      background: #facc15;
+      background: var(--yellow);
       text-align: center;
       border-radius: 28px;
       padding: 50px;
     }
 
-    .donate-section {
-      background: linear-gradient(135deg, #93c5fd, #facc15);
-      text-align: center;
-      border-radius: 28px;
-      padding: 60px 50px;
-    }
-
-    .donate-section h2 {
-      font-size: 38px;
-      margin-bottom: 16px;
-    }
-
-    .donate-section p {
-      font-size: 18px;
-      max-width: 600px;
-      margin: 0 auto;
+    .cta p {
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .button {
       display: inline-block;
       margin-top: 24px;
       padding: 14px 28px;
-      background: #111827;
+      background: var(--ink);
       color: white;
       border-radius: 999px;
       text-decoration: none;
       font-weight: bold;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
     }
 
-    .button-donate {
-      display: inline-block;
-      margin-top: 28px;
-      padding: 16px 36px;
-      background: #111827;
-      color: white;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 18px;
+    .button.secondary {
+      background: white;
+      color: var(--ink);
+      border: 2px solid var(--ink);
     }
 
-    .button-donate:hover {
-      background: #374151;
+    /* Contact form */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 30px;
+    }
+
+    .contact-form {
+      background: white;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    .contact-form label {
+      display: block;
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 6px;
+      margin-top: 16px;
+    }
+
+    .contact-form label:first-child {
+      margin-top: 0;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: 'Work Sans', Arial, sans-serif;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .contact-direct {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @media (max-width: 800px) {
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
     }
 
     footer {
@@ -170,6 +408,13 @@
       color: white;
       text-align: center;
       padding: 40px 20px;
+    }
+
+    footer .legal {
+      max-width: 65ch;
+      margin: 14px auto 0;
+      font-size: 13px;
+      color: #94a3b8;
     }
 
     @media (max-width: 700px) {
@@ -181,26 +426,28 @@
         flex-direction: column;
         gap: 12px;
       }
-
-      nav a {
-        margin: 0 8px;
-      }
     }
   </style>
 </head>
 
 <body>
   <nav>
-    <div class="nav-logo">
-      <img src="logo.png" alt="SupplySpark Logo" />
-      <h2>SupplySpark</h2>
-    </div>
-    <div>
-      <a href="#mission">Mission</a>
-      <a href="#process">Process</a>
-      <a href="#impact">Impact</a>
-      <a href="#donate">Donate</a>
-      <a href="#contact">Contact</a>
+    <h2>SupplySpark</h2>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a class="nav-link" href="#mission">Mission</a>
+        <a class="nav-link" href="#process">Process</a>
+        <a class="nav-link" href="#impact">Impact</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </div>
+      <div class="social-icons">
+        <a href="https://instagram.com/supply.spark" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="3"/><line x1="7" y1="10" x2="7" y2="17"/><circle cx="7" cy="6.5" r="0.6" fill="currentColor"/><path d="M11 17v-4.5c0-1.4 1-2.5 2.5-2.5s2.5 1.1 2.5 2.5V17"/></svg>
+        </a>
+      </div>
     </div>
   </nav>
 
@@ -210,7 +457,20 @@
       SupplySpark is a student-led nonprofit that provides school supplies to foster children in need,
       helping every student feel prepared, confident, and ready to succeed.
     </p>
-    <a class="button" href="#contact">Get Involved</a>
+    <div class="hero-buttons">
+      <a class="button" href="#contact">Get Involved</a>
+      <a class="button secondary" href="#impact">See Our Impact</a>
+    </div>
+
+    <div class="hero-carousel" id="heroCarousel">
+      <div class="slide active">
+        <img src="impact-photo.png" alt="SupplySpark volunteers delivering backpacks to Bithiah's Family Services">
+        <div class="caption">Delivering backpacks to Bithiah's Family Services</div>
+      </div>
+      <div class="dots">
+        <span class="dot active"></span>
+      </div>
+    </div>
   </header>
 
   <section id="mission">
@@ -230,18 +490,33 @@
     <h2>Our Process</h2>
     <div class="cards">
       <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7C9 7 8 5.5 8 4a2 2 0 0 1 4 0c0-1.5-1-2.5-2-2.5"/><path d="M12 7c3 0 4-1.5 4-3a2 2 0 0 0-4 0"/></svg>
+        </div>
         <h3>1. Community Donations</h3>
         <p>We collect school supplies and financial donations from individuals, businesses, and local organizations.</p>
       </div>
+
       <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </div>
         <h3>2. Organizing Supplies</h3>
         <p>Volunteers sort, package, and prepare supplies for distribution.</p>
       </div>
+
       <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5 3 9l2-2 3 3 2-2-3-3 2-2 6.5 6.5"/><path d="M15.5 9.5 21 15l-2 2-3-3-2 2 3 3-2 2-6.5-6.5"/></svg>
+        </div>
         <h3>3. Partnering With Organizations</h3>
         <p>We work with foster agencies, schools, shelters, and community groups to identify students in need.</p>
       </div>
+
       <div class="card">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="14" height="10" rx="1"/><path d="M15 10h4l3 3v4h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="17" cy="19" r="2"/></svg>
+        </div>
         <h3>4. Delivering Supplies</h3>
         <p>Supplies are distributed directly to foster children before and during the school year.</p>
       </div>
@@ -252,15 +527,39 @@
     <div class="highlight">
       <h2>Our Impact</h2>
       <p>
-        Although SupplySpark is just getting started, our goal is to make a lasting difference in the
-        lives of foster children through education support and community involvement.
+        We're just getting started, but the numbers are already real. Every donation goes straight to
+        supplies for kids who need them, and here's what that's added up to so far.
       </p>
-      <ul>
-        <li>Donating hundreds of supplies each year</li>
-        <li>Expanding partnerships with local schools and foster organizations</li>
-        <li>Hosting annual school supply drives</li>
-        <li>Building long-term support programs for students</li>
-      </ul>
+
+      <div class="impact-grid">
+        <div class="impact-photo">
+          <img src="impact-photo.png" alt="SupplySpark founders and a volunteer holding donated backpacks at Bithiah's Family Services">
+        </div>
+        <div>
+          <div class="stat-row">
+            <div class="stat">
+              <span class="num">31</span>
+              <span class="label">kids helped</span>
+            </div>
+            <div class="stat">
+              <span class="num">$200</span>
+              <span class="label">raised</span>
+            </div>
+            <div class="stat">
+              <span class="num">3</span>
+              <span class="label">foster homes partnered</span>
+            </div>
+          </div>
+          <p style="max-width:100%; margin-top:18px; font-size:14px; color:#cbd5e1;">
+            Partner foster homes: Bithiah's Family Services, SerenityKids, and Life Steps Foundation.
+          </p>
+          <ul>
+            <li>Expanding partnerships with local schools and foster organizations</li>
+            <li>Hosting annual school supply drives</li>
+            <li>Building long-term support programs for students</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -271,30 +570,21 @@
         <h3>Donate Supplies</h3>
         <p>Contribute notebooks, backpacks, pencils, calculators, and other school supplies.</p>
       </div>
+
       <div class="card">
         <h3>Make a Financial Donation</h3>
         <p>Monetary donations help us purchase additional supplies and expand our reach.</p>
+        <div class="donation-note">
+          Every dollar goes directly toward backpacks, notebooks, and classroom essentials for the
+          kids we partner with — no overhead, no middleman. The $200 we've raised so far has already
+          gone straight into supplies for the 31 students we've served.
+        </div>
       </div>
+
       <div class="card">
         <h3>Volunteer</h3>
         <p>Help organize donation drives, sort supplies, and assist with community events.</p>
       </div>
-    </div>
-  </section>
-
-  <section id="donate">
-    <div class="donate-section">
-      <h2>💛 Make a Donation</h2>
-      <p>
-        Every donation helps provide foster kids with school supplies necessary for learning.
-        Your support allows this nonprofit to gather and distribute essential materials to help students feel prepared and confident in the classroom.
-      </p>
-      <a class="button-donate" href="https://hcb.hackclub.com/donations/start/supplyspark" target="_blank">
-        Donate Now
-      </a>
-      <p style="margin-top: 16px; font-size: 14px; opacity: 0.8;">
-        Donations are tax-deductible through Hack Club Bank, a 501(c)(3) nonprofit.
-      </p>
     </div>
   </section>
 
@@ -305,9 +595,9 @@
       the school supplies they need to succeed. Their goal is to build a strong community effort that
       gives foster children the tools and encouragement they deserve.
     </p>
+  </section>
 
-    <br />
-
+  <section>
     <h2>Head of Technology</h2>
     <p>
       Our technology team is led by Braydon Gunawan and Arick Hong, who work to build and maintain
@@ -317,16 +607,19 @@
 
   <section>
     <h2>FAQ</h2>
+
     <div class="card">
       <h3>Who does SupplySpark help?</h3>
       <p>SupplySpark supports foster children and students in need by providing school supplies.</p>
     </div>
     <br />
+
     <div class="card">
       <h3>How can I donate?</h3>
-      <p>You can donate school supplies, make a financial contribution, or volunteer your time. </p>
+      <p>You can donate school supplies, make a financial contribution, or volunteer your time.</p>
     </div>
     <br />
+
     <div class="card">
       <h3>Are donated supplies required to be new?</h3>
       <p>No. New or lightly used items in good condition are welcome.</p>
@@ -334,16 +627,52 @@
   </section>
 
   <section id="contact">
-    <div class="cta">
-      <h2>Contact Us</h2>
-      <p>Email: <strong>supplyspark.org@gmail.com</strong></p>
-      <p>Instagram: <strong>@supply.spark</strong></p>
-      <a class="button" href="mailto:supplyspark.org@gmail.com">Email Us</a>
+    <h2>Contact Us</h2>
+    <div class="contact-wrap">
+      <form class="contact-form" action="mailto:supplyspark.org@gmail.com" method="get" enctype="text/plain">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="How can we help, or how would you like to get involved?" required></textarea>
+
+        <button type="submit" class="button" style="width:100%; margin-top:20px;">Send Message</button>
+      </form>
+
+      <div class="contact-direct cta">
+        <h2>Reach Us Directly</h2>
+        <p>Email: <strong>supplyspark.org@gmail.com</strong></p>
+        <p>Instagram: <strong>@supply.spark</strong></p>
+        <a class="button" href="mailto:supplyspark.org@gmail.com">Email Us</a>
+      </div>
     </div>
   </section>
 
   <footer>
     <p>© 2026 SupplySpark. Helping students start the school year with confidence.</p>
+    <p class="legal">
+      SupplySpark is fiscally sponsored by Hack Club, a registered 501(c)(3) nonprofit organization.
+      Donations are tax-deductible to the fullest extent allowed by law.
+    </p>
   </footer>
+
+  <script>
+    // Hero carousel — swap in more <img> slides + dots as event photos come in
+    const slides = document.querySelectorAll('#heroCarousel .slide');
+    const dots = document.querySelectorAll('#heroCarousel .dot');
+    let current = 0;
+    if (slides.length > 1) {
+      setInterval(() => {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+      }, 5000);
+    }
+  </script>
 </body>
 </html>
