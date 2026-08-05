@@ -427,12 +427,16 @@
         gap: 12px;
       }
     }
-  </style>
+  
+.logo-title{display:flex;align-items:center;gap:10px;}
+.logo-title img{width:42px;height:42px;object-fit:contain;}
+
+</style>
 </head>
 
 <body>
   <nav>
-    <h2>SupplySpark</h2>
+    <div class="logo-title"><img src="logo.png" alt="SupplySpark Logo"><h2>SupplySpark</h2></div>
     <div class="nav-right">
       <div class="nav-links">
         <a class="nav-link" href="#mission">Mission</a>
@@ -651,7 +655,17 @@
     </div>
   </section>
 
-  <footer>
+  
+<section id="donate">
+  <div class="cta">
+    <h2>Donate</h2>
+    <p>Every donation helps us provide backpacks, notebooks, pencils, calculators, and other school supplies for foster children who need them.</p>
+    <p style="margin-top:18px;">SupplySpark is fiscally sponsored by Hack Club, making your donation tax-deductible where permitted by law.</p>
+    <a class="button" href="https://hcb.hackclub.com/donations/start/supplyspark" target="_blank" rel="noopener">Donate Through Hack Club</a>
+  </div>
+</section>
+
+<footer>
     <p>© 2026 SupplySpark. Helping students start the school year with confidence.</p>
     <p class="legal">
       SupplySpark is fiscally sponsored by Hack Club, a registered 501(c)(3) nonprofit organization.
