@@ -566,7 +566,7 @@
               <span class="label">kids helped</span>
             </div>
             <div class="stat">
-              <span class="num" data-count="570" data-prefix="$">$0</span>
+              <span class="num" id="raisedStat" data-count="570" data-prefix="$">$0</span>
               <span class="label">raised</span>
             </div>
             <div class="stat">
@@ -696,54 +696,61 @@
   </footer>
  
   <script>
-    // Hero carousel — swap in more <img> slides + dots as event photos come in
-    const slides = document.querySelectorAll('#heroCarousel .slide');
-    const dots = document.querySelectorAll('#heroCarousel .dot');
-    let current = 0;
-    if (slides.length > 1) {
-      setInterval(() => {
-        slides[current].classList.remove('active');
-        dots[current].classList.remove('active');
-        current = (current + 1) % slides.length;
-        slides[current].classList.add('active');
-        dots[current].classList.add('active');
-      }, 5000);
+  // Hero carousel
+  const slides = document.querySelectorAll('#heroCarousel .slide');
+  const dots = document.querySelectorAll('#heroCarousel .dot');
+  let current = 0;
+  if (slides.length > 1) {
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }, 5000);
+  }
+
+  function animateCount(el) {
+    const target = parseFloat(el.dataset.count);
+    const prefix = el.dataset.prefix || '';
+    const duration = 1400;
+    const start = performance.now();
+    function tick(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = prefix + Math.round(target * eased).toLocaleString();
+      if (p < 1) requestAnimationFrame(tick);
     }
- 
-    // Count-up stats, triggered when scrolled into view
-    function animateCount(el) {
-      const target = parseFloat(el.dataset.count);
-      const prefix = el.dataset.prefix || '';
-      const duration = 1400;
-      const start = performance.now();
-      function tick(now) {
-        const p = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = prefix + Math.round(target * eased).toLocaleString();
-        if (p < 1) requestAnimationFrame(tick);
+    requestAnimationFrame(tick);
+  }
+
+  const raisedEl = document.getElementById('raisedStat');
+  const statEls = document.querySelectorAll('.stat .num');
+
+  // Kick off the live fetch immediately, don't wait for scroll
+  const fetchRaised = fetch('https://hcb.hackclub.com/api/v3/organizations/supplyspark')
+    .then(r => r.json())
+    .then(org => Math.round(org.balances.total_raised / 100))
+    .catch(() => parseFloat(raisedEl.dataset.count)); // fallback if API fails
+
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        statEls.forEach(el => {
+          if (el === raisedEl) {
+            fetchRaised.then(dollars => {
+              raisedEl.dataset.count = dollars;
+              animateCount(raisedEl);
+            });
+          } else {
+            animateCount(el);
+          }
+        });
+        statObserver.disconnect();
       }
-      requestAnimationFrame(tick);
-    }
- 
-    const statEls = document.querySelectorAll('.stat .num');
-    const statObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          statEls.forEach(animateCount);
-          statObserver.disconnect();
-        }
-      });
-    }, { threshold: 0.4 });
-    statObserver.observe(document.querySelector('.stat-row'));
- 
-    // Live "raised" amount from HCB, feeds into the count-up above
-    fetch('https://hcb.hackclub.com/api/v3/organizations/supplyspark')
-      .then(r => r.json())
-      .then(org => {
-        const dollars = Math.round(org.balances.total_raised / 100);
-        document.querySelector('.stat:nth-child(2) .num').dataset.count = dollars;
-      })
-      .catch(() => {});
-  </script>
+    });
+  }, { threshold: 0.4 });
+  statObserver.observe(document.querySelector('.stat-row'));
+</script>
 </body>
 </html>
