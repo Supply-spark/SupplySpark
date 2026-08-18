@@ -705,5 +705,18 @@
       }, 5000);
     }
   </script>
+  <script>
+    fetch('https://hcb.hackclub.com/api/v3/organizations/supplyspark')
+      .then(r => r.json())
+      .then(org => {
+        console.log(org);
+        const raisedCents = org.total_raised ?? org.raised ?? org.balance_cents;
+        if (raisedCents != null) {
+          document.querySelector('.stat:nth-child(2) .num').textContent =
+            '$' + Math.round(raisedCents / 100).toLocaleString();
+        }
+      })
+      .catch(() => {});
+  </script>
 </body>
 </html>
