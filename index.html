@@ -710,7 +710,7 @@
       .then(r => r.json())
       .then(org => {
         console.log(org);
-        const raisedCents = org.total_raised ?? org.raised ?? org.balance_cents;
+        const raisedCents = org.balances.total_raised;
         if (raisedCents != null) {
           document.querySelector('.stat:nth-child(2) .num').textContent =
             '$' + Math.round(raisedCents / 100).toLocaleString();
