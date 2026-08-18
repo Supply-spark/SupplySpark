@@ -14,36 +14,36 @@
       padding: 0;
       font-family: 'Work Sans', Arial, sans-serif;
     }
-
+ 
     :root {
       --yellow: #facc15;
       --blue: #93c5fd;
       --ink: #111827;
       --paper: #f8fafc;
     }
-
+ 
     body {
       background: var(--paper);
       color: var(--ink);
       line-height: 1.6;
     }
-
+ 
     h1, h2, h3 {
       font-family: 'Fraunces', Georgia, serif;
       font-weight: 600;
     }
-
+ 
     p {
       max-width: 65ch;
     }
-
+ 
     header {
       background: linear-gradient(135deg, var(--yellow), var(--blue));
       padding: 70px 20px 90px;
       text-align: center;
       position: relative;
     }
-
+ 
     header h1 {
       font-size: 56px;
       margin-bottom: 20px;
@@ -51,13 +51,13 @@
       margin-left: auto;
       margin-right: auto;
     }
-
+ 
     header p {
       max-width: 62ch;
       margin: auto;
       font-size: 20px;
     }
-
+ 
     .hero-buttons {
       margin-top: 28px;
       display: flex;
@@ -65,7 +65,7 @@
       justify-content: center;
       flex-wrap: wrap;
     }
-
+ 
     /* Hero image carousel */
     .hero-carousel {
       max-width: 820px;
@@ -77,25 +77,25 @@
       aspect-ratio: 16 / 9;
       background: #111827;
     }
-
+ 
     .hero-carousel .slide {
       position: absolute;
       inset: 0;
       opacity: 0;
       transition: opacity 0.9s ease;
     }
-
+ 
     .hero-carousel .slide.active {
       opacity: 1;
     }
-
+ 
     .hero-carousel img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
-
+ 
     .hero-carousel .caption {
       position: absolute;
       left: 0;
@@ -108,7 +108,7 @@
       font-size: 15px;
       font-weight: 500;
     }
-
+ 
     .hero-carousel .dots {
       position: absolute;
       bottom: 14px;
@@ -116,18 +116,18 @@
       display: flex;
       gap: 6px;
     }
-
+ 
     .hero-carousel .dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
       background: rgba(255,255,255,0.5);
     }
-
+ 
     .hero-carousel .dot.active {
       background: white;
     }
-
+ 
     nav {
       background: white;
       padding: 18px 40px;
@@ -141,34 +141,34 @@
       gap: 16px;
       flex-wrap: wrap;
     }
-
+ 
     nav h2 {
       font-size: 24px;
     }
-
+ 
     .nav-right {
       display: flex;
       align-items: center;
       gap: 24px;
       flex-wrap: wrap;
     }
-
+ 
     nav a.nav-link {
       color: var(--ink);
       text-decoration: none;
       font-weight: bold;
     }
-
+ 
     .nav-links {
       display: flex;
       gap: 24px;
     }
-
+ 
     .social-icons {
       display: flex;
       gap: 12px;
     }
-
+ 
     .social-icons a {
       display: flex;
       align-items: center;
@@ -180,46 +180,46 @@
       color: var(--ink);
       transition: background 0.2s ease;
     }
-
+ 
     .social-icons a:hover {
       background: var(--yellow);
     }
-
+ 
     .social-icons svg {
       width: 17px;
       height: 17px;
     }
-
+ 
     section {
       max-width: 1100px;
       margin: auto;
       padding: 70px 20px;
     }
-
+ 
     h2 {
       font-size: 38px;
       margin-bottom: 24px;
     }
-
+ 
     h3 {
       font-size: 24px;
       margin-bottom: 12px;
     }
-
+ 
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 24px;
       margin-top: 30px;
     }
-
+ 
     .card {
       background: white;
       padding: 28px;
       border-radius: 20px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     }
-
+ 
     .card-icon {
       width: 48px;
       height: 48px;
@@ -230,24 +230,24 @@
       justify-content: center;
       margin-bottom: 16px;
     }
-
+ 
     .card-icon svg {
       width: 26px;
       height: 26px;
       stroke: var(--ink);
     }
-
+ 
     .highlight {
       background: #111827;
       color: white;
       border-radius: 28px;
       padding: 50px;
     }
-
+ 
     .highlight p {
       max-width: 65ch;
     }
-
+ 
     /* Impact / progress split layout */
     .impact-grid {
       display: grid;
@@ -256,58 +256,58 @@
       align-items: center;
       margin-top: 30px;
     }
-
+ 
     .impact-photo {
       border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 12px 30px rgba(0,0,0,0.35);
     }
-
+ 
     .impact-photo img {
       width: 100%;
       display: block;
     }
-
+ 
     .stat-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       margin-top: 24px;
     }
-
+ 
     .stat {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 16px;
-      padding: 18px 14px;
       text-align: center;
+      padding: 10px;
     }
-
+ 
     .stat .num {
       font-family: 'Fraunces', serif;
-      font-size: 34px;
-      font-weight: 600;
+      font-size: 56px;
+      font-weight: 700;
       color: var(--yellow);
       display: block;
+      letter-spacing: -1px;
     }
-
+ 
     .stat .label {
       font-size: 13px;
       color: #cbd5e1;
-      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 6px;
     }
-
+ 
     @media (max-width: 800px) {
       .impact-grid {
         grid-template-columns: 1fr;
       }
     }
-
+ 
     ul {
       margin-left: 24px;
       margin-top: 16px;
     }
-
+ 
     .donation-note {
       margin-top: 18px;
       padding: 18px 22px;
@@ -316,19 +316,19 @@
       border-radius: 8px;
       font-size: 15px;
     }
-
+ 
     .cta {
       background: var(--yellow);
       text-align: center;
       border-radius: 28px;
       padding: 50px;
     }
-
+ 
     .cta p {
       margin-left: auto;
       margin-right: auto;
     }
-
+ 
     .button {
       display: inline-block;
       margin-top: 24px;
@@ -342,13 +342,13 @@
       cursor: pointer;
       font-size: 16px;
     }
-
+ 
     .button.secondary {
       background: white;
       color: var(--ink);
       border: 2px solid var(--ink);
     }
-
+ 
     /* Contact form */
     .contact-wrap {
       display: grid;
@@ -356,14 +356,14 @@
       gap: 40px;
       margin-top: 30px;
     }
-
+ 
     .contact-form {
       background: white;
       border-radius: 20px;
       padding: 32px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     }
-
+ 
     .contact-form label {
       display: block;
       font-weight: 600;
@@ -371,11 +371,11 @@
       margin-bottom: 6px;
       margin-top: 16px;
     }
-
+ 
     .contact-form label:first-child {
       margin-top: 0;
     }
-
+ 
     .contact-form input,
     .contact-form textarea {
       width: 100%;
@@ -385,43 +385,43 @@
       font-size: 15px;
       font-family: 'Work Sans', Arial, sans-serif;
     }
-
+ 
     .contact-form textarea {
       resize: vertical;
       min-height: 110px;
     }
-
+ 
     .contact-direct {
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-
+ 
     @media (max-width: 800px) {
       .contact-wrap {
         grid-template-columns: 1fr;
       }
     }
-
+ 
     footer {
       background: #111827;
       color: white;
       text-align: center;
       padding: 40px 20px;
     }
-
+ 
     footer .legal {
       max-width: 65ch;
       margin: 14px auto 0;
       font-size: 13px;
       color: #94a3b8;
     }
-
+ 
     @media (max-width: 700px) {
       header h1 {
         font-size: 42px;
       }
-
+ 
       nav {
         flex-direction: column;
         gap: 12px;
@@ -433,22 +433,22 @@
     align-items: center;
     gap: 10px;
 }
-
+ 
 .logo-title img {
     width: 42px;
     height: 42px;
     display: block;
     object-fit: contain;
 }
-
+ 
 .logo-title h2 {
     margin: 0;
     line-height: 1;
 }
-
+ 
 </style>
 </head>
-
+ 
 <body>
   <nav>
     <div class="logo-title"><img src="logo.png" alt="SupplySpark Logo"><h2>SupplySpark</h2></div>
@@ -469,7 +469,7 @@
       </div>
     </div>
   </nav>
-
+ 
   <header>
     <h1>Helping Every Student Walk In Prepared</h1>
     <p>
@@ -480,18 +480,23 @@
       <a class="button" href="#contact">Get Involved</a>
       <a class="button secondary" href="#impact">See Our Impact</a>
     </div>
-
+ 
     <div class="hero-carousel" id="heroCarousel">
       <div class="slide active">
         <img src="impact-photo.png" alt="SupplySpark volunteers delivering backpacks to Bithiah's Family Services">
         <div class="caption">Delivering backpacks to Bithiah's Family Services</div>
       </div>
+      <div class="slide">
+        <img src="backpack-delivery.jpg" alt="SupplySpark founders packing backpacks with a partner organization">
+        <div class="caption">Sorting and packing backpacks for delivery</div>
+      </div>
       <div class="dots">
         <span class="dot active"></span>
+        <span class="dot"></span>
       </div>
     </div>
   </header>
-
+ 
   <section id="mission">
     <h2>Our Mission</h2>
     <p>
@@ -504,7 +509,7 @@
       the tools they need to learn, grow, and reach their full potential.
     </p>
   </section>
-
+ 
   <section id="process">
     <h2>Our Process</h2>
     <div class="cards">
@@ -515,7 +520,7 @@
         <h3>1. Community Donations</h3>
         <p>We collect school supplies and financial donations from individuals, businesses, and local organizations.</p>
       </div>
-
+ 
       <div class="card">
         <div class="card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
@@ -523,7 +528,7 @@
         <h3>2. Organizing Supplies</h3>
         <p>Volunteers sort, package, and prepare supplies for distribution.</p>
       </div>
-
+ 
       <div class="card">
         <div class="card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5 3 9l2-2 3 3 2-2-3-3 2-2 6.5 6.5"/><path d="M15.5 9.5 21 15l-2 2-3-3-2 2 3 3-2 2-6.5-6.5"/></svg>
@@ -531,7 +536,7 @@
         <h3>3. Partnering With Organizations</h3>
         <p>We work with foster agencies, schools, shelters, and community groups to identify students in need.</p>
       </div>
-
+ 
       <div class="card">
         <div class="card-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="14" height="10" rx="1"/><path d="M15 10h4l3 3v4h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="17" cy="19" r="2"/></svg>
@@ -541,7 +546,7 @@
       </div>
     </div>
   </section>
-
+ 
   <section id="impact">
     <div class="highlight">
       <h2>Our Impact</h2>
@@ -549,7 +554,7 @@
         We're just getting started, but the numbers are already real. Every donation goes straight to
         supplies for kids who need them, and here's what that's added up to so far.
       </p>
-
+ 
       <div class="impact-grid">
         <div class="impact-photo">
           <img src="impact-photo.png" alt="SupplySpark founders and a volunteer holding donated backpacks at Bithiah's Family Services">
@@ -557,15 +562,15 @@
         <div>
           <div class="stat-row">
             <div class="stat">
-              <span class="num">96</span>
+              <span class="num" data-count="96">0</span>
               <span class="label">kids helped</span>
             </div>
             <div class="stat">
-              <span class="num">$570</span>
+              <span class="num" data-count="570" data-prefix="$">$0</span>
               <span class="label">raised</span>
             </div>
             <div class="stat">
-              <span class="num">3</span>
+              <span class="num" data-count="3">0</span>
               <span class="label">foster homes partnered</span>
             </div>
           </div>
@@ -581,7 +586,7 @@
       </div>
     </div>
   </section>
-
+ 
   <section>
     <h2>Getting Involved</h2>
     <div class="cards">
@@ -589,7 +594,7 @@
         <h3>Donate Supplies</h3>
         <p>Contribute notebooks, backpacks, pencils, calculators, and other school supplies.</p>
       </div>
-
+ 
       <div class="card">
         <h3>Make a Financial Donation</h3>
         <p>Monetary donations help us purchase additional supplies and expand our reach.</p>
@@ -599,70 +604,70 @@
           gone straight into supplies for the 31 students we've served.
         </div>
       </div>
-
+ 
       <div class="card">
         <h3>Volunteer</h3>
         <p>Help organize donation drives, sort supplies, and assist with community events.</p>
       </div>
     </div>
   </section>
-
+ 
 <section>
   <h1 style="font-size:56px; margin-bottom:32px;">About the Founders</h1>
-
+ 
   <h2>Head of Operations</h2>
   <p>
     SupplySpark was started by Byron Chen and Owen Huang to help foster children gain access to
     the school supplies they need to succeed. Their goal is to build a strong community effort that
     gives foster children the tools and encouragement they deserve.
   </p>
-
+ 
   <br><br>
-
+ 
   <h2>Head of Technology</h2>
   <p>
     Our technology team is led by Braydon Gunawan and Arick Hong, who work to build and maintain
     SupplySpark's digital outreach, ensuring our mission reaches as many people as possible.
   </p>
 </section>
-
+ 
   <section>
     <h2>FAQ</h2>
-
+ 
     <div class="card">
       <h3>Who does SupplySpark help?</h3>
       <p>SupplySpark supports foster children and students in need by providing school supplies.</p>
     </div>
     <br />
-
+ 
     <div class="card">
       <h3>How can I donate?</h3>
       <p>You can donate school supplies, make a financial contribution, or volunteer your time.</p>
     </div>
     <br />
-
+ 
     <div class="card">
       <h3>Are donated supplies required to be new?</h3>
       <p>No. New or lightly used items in good condition are welcome.</p>
     </div>
   </section>
-
+ 
   <section id="contact">
     <h2>Contact Us</h2>
     <div class="contact-wrap">
       <form class="contact-form" action="mailto:supplyspark.org@gmail.com" method="get" enctype="text/plain">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" placeholder="Your name" required>
-
+ 
         <label for="email">Email</label>
         <input type="email" id="email" name="email" placeholder="you@example.com" required>
-
+ 
         <label for="message">Message</label>
         <textarea id="message" name="message" placeholder="How can we help, or how would you like to get involved?" required></textarea>
-
+ 
         <button type="submit" class="button" style="width:100%; margin-top:20px;">Send Message</button>
       </form>
-
+ 
       <div class="contact-direct cta">
         <h2>Reach Us Directly</h2>
         <p>Email: <strong>supplyspark.org@gmail.com</strong></p>
@@ -671,7 +676,7 @@
       </div>
     </div>
   </section>
-
+ 
   
 <section id="donate">
   <div class="cta">
@@ -681,7 +686,7 @@
     <a class="button" href="https://hcb.hackclub.com/donations/start/supplyspark" target="_blank" rel="noopener">Donate Through Hack Club</a>
   </div>
 </section>
-
+ 
 <footer>
     <p>© 2026 SupplySpark. Helping students start the school year with confidence.</p>
     <p class="legal">
@@ -689,7 +694,7 @@
       Donations are tax-deductible to the fullest extent allowed by law.
     </p>
   </footer>
-
+ 
   <script>
     // Hero carousel — swap in more <img> slides + dots as event photos come in
     const slides = document.querySelectorAll('#heroCarousel .slide');
@@ -704,17 +709,39 @@
         dots[current].classList.add('active');
       }, 5000);
     }
-  </script>
-  <script>
+ 
+    // Count-up stats, triggered when scrolled into view
+    function animateCount(el) {
+      const target = parseFloat(el.dataset.count);
+      const prefix = el.dataset.prefix || '';
+      const duration = 1400;
+      const start = performance.now();
+      function tick(now) {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = prefix + Math.round(target * eased).toLocaleString();
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+ 
+    const statEls = document.querySelectorAll('.stat .num');
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          statEls.forEach(animateCount);
+          statObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+    statObserver.observe(document.querySelector('.stat-row'));
+ 
+    // Live "raised" amount from HCB, feeds into the count-up above
     fetch('https://hcb.hackclub.com/api/v3/organizations/supplyspark')
       .then(r => r.json())
       .then(org => {
-        console.log(org);
-        const raisedCents = org.balances.total_raised;
-        if (raisedCents != null) {
-          document.querySelector('.stat:nth-child(2) .num').textContent =
-            '$' + Math.round(raisedCents / 100).toLocaleString();
-        }
+        const dollars = Math.round(org.balances.total_raised / 100);
+        document.querySelector('.stat:nth-child(2) .num').dataset.count = dollars;
       })
       .catch(() => {});
   </script>
