@@ -88,6 +88,32 @@
       border-radius: 14px;
       display: block;
     }
+    /* Move hero mosaic images in opposite directions */
+    .hero-mosaic img:nth-child(even) {
+      animation: move-left 18s ease-in-out infinite alternate;
+    }
+
+    .hero-mosaic img:nth-child(odd) {
+      animation: move-right 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes move-left {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-40px);
+      }
+    }
+
+    @keyframes move-right {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(40px);
+      }
+    }
 
     .hero-overlay {
       position: absolute;
@@ -654,6 +680,55 @@
       margin: 0;
       line-height: 1;
     }
+
+    /* Center all website text */
+    section,
+    section .reveal,
+    .panel,
+    .card,
+    .highlight,
+    .contact-direct,
+    .contact-form,
+    .donation-note,
+    .impact-grid,
+    footer {
+      text-align: center;
+    }
+
+    /* Center paragraphs */
+    section p,
+    .card p,
+    .highlight p,
+    .contact-direct p,
+    .donation-note {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Center lists */
+    section ul {
+      display: inline-block;
+      text-align: left;
+      margin-left: 0;
+    }
+
+    /* Center icons inside cards */
+    .card-icon {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Center the founder and FAQ headings/content */
+    section h1,
+    section h2,
+    section h3 {
+      text-align: center;
+    }
+
+    /* Center impact content */
+    .impact-grid > div {
+      text-align: center;
+    }
   </style>
 </head>
 
@@ -701,9 +776,8 @@
     </div>
 
     <a class="scroll-indicator" href="#mission" aria-label="Scroll to our mission">
-      <span class="scroll-arrow">↓</span>
-      <span class="scroll-line"></span>
-    </a>
+    <span class="scroll-arrow">↓</span>
+  </a>
 
     <div class="hero-stats">
       <div class="hero-stat">
