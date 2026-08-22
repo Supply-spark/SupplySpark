@@ -962,8 +962,8 @@
           <p>Monetary donations help us purchase additional supplies and expand our reach.</p>
           <div class="donation-note">
             Every dollar goes directly toward backpacks, notebooks, and classroom essentials for the
-            kids we partner with — no overhead, no middleman. The $200 we've raised so far has already
-            gone straight into supplies for the 31 students we've served.
+            kids we partner with — no overhead, no middleman. The $<span id="raisedInline">200</span> we've raised so far has already
+            gone straight into supplies for the 96 students we've served.
           </div>
         </div>
 
@@ -1151,6 +1151,7 @@
     }
 
     const raisedEl = document.getElementById('raisedStat');
+    const raisedInlineEl = document.getElementById('raisedInline');
     const statEls = document.querySelectorAll('.hero-stat .num');
 
     const fetchRaised = fetch('https://hcb.hackclub.com/api/v3/organizations/supplyspark')
@@ -1167,6 +1168,10 @@
       } else {
         animateCount(el);
       }
+    });
+
+    fetchRaised.then(dollars => {
+      if (raisedInlineEl) raisedInlineEl.textContent = dollars.toLocaleString();
     });
 
     // Fade + slide up on scroll
