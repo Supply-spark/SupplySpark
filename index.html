@@ -70,7 +70,7 @@
       padding: 100px 20px 60px;
     }
 
-    /* Same visual grid as the original: 8 images across. */
+    /* Original mosaic appearance, with real horizontal rows for animation */
     .hero-mosaic {
       position: absolute;
       inset: -12%;
@@ -78,22 +78,24 @@
       flex-direction: column;
       gap: 14px;
       transform: rotate(-6deg) scale(1.15);
+      transform-origin: center center;
       z-index: 0;
       pointer-events: none;
     }
 
+    /* Each row has the exact original 8-column grid */
     .mosaic-row {
       display: grid;
       grid-template-columns: repeat(8, 1fr);
       grid-auto-rows: 170px;
       gap: 14px;
       width: 100%;
-      min-width: 100%;
       height: 170px;
       flex: 0 0 170px;
       will-change: transform;
     }
 
+    /* Keep the original image styling */
     .mosaic-row img {
       width: 100%;
       height: 100%;
@@ -102,27 +104,32 @@
       display: block;
     }
 
-    /* Whole horizontal rows move, not individual images. */
-    .mosaic-row.move-right {
-      animation: mosaic-row-right 7s ease-in-out infinite alternate;
+    /* Whole horizontal rows move together */
+    .mosaic-row:nth-child(odd) {
+      animation: row-right 7s ease-in-out infinite alternate;
     }
 
-    .mosaic-row.move-left {
-      animation: mosaic-row-left 7s ease-in-out infinite alternate;
+    .mosaic-row:nth-child(even) {
+      animation: row-left 7s ease-in-out infinite alternate;
     }
 
-    @keyframes mosaic-row-right {
-      from { transform: translateX(-55px); }
-      to { transform: translateX(55px); }
+    @keyframes row-right {
+      from { transform: translateX(-70px); }
+      to { transform: translateX(70px); }
     }
 
-    @keyframes mosaic-row-left {
-      from { transform: translateX(55px); }
-      to { transform: translateX(-55px); }
+    @keyframes row-left {
+      from { transform: translateX(70px); }
+      to { transform: translateX(-70px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .mosaic-row {
+        animation: none !important;
+      }
     }
 
     .hero-overlay {
-
       position: absolute;
       inset: 0;
       background: linear-gradient(180deg, rgba(17,24,39,0.72), rgba(17,24,39,0.55) 45%, rgba(17,24,39,0.88));
@@ -712,18 +719,6 @@
       margin-left: 0;
     }
 
-    .contact-form label,
-    .contact-form input,
-    .contact-form textarea,
-    .checkbox-group,
-    .checkbox-option {
-      text-align: center;
-    }
-
-    .checkbox-group {
-      justify-content: center;
-    }
-
     /* Center icons inside cards */
     .card-icon {
       margin-left: auto;
@@ -766,10 +761,6 @@
   <div class="hero">
     <div class="hero-mosaic" id="heroMosaic">
       <!-- Populated automatically from the /image folder on GitHub — see script at bottom of page -->
-      <div class="mosaic-row move-right">
-        <img src="impact-photo.png" alt="" width="220" height="170">
-        <img src="backpack-delivery.jpg" alt="" width="220" height="170">
-      </div>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-glow g1"></div>
@@ -1081,9 +1072,12 @@
         const rowCount = Math.ceil(tileCount / COLUMNS);
         mosaic.innerHTML = '';
 
+        // Same image order and 8-column layout as the original mosaic.
+        // The only difference is each group of 8 images is wrapped in a row
+        // so the entire horizontal row can move together.
         for (let row = 0; row < rowCount; row++) {
           const rowDiv = document.createElement('div');
-          rowDiv.className = 'mosaic-row ' + (row % 2 === 0 ? 'move-right' : 'move-left');
+          rowDiv.className = 'mosaic-row';
 
           for (let col = 0; col < COLUMNS; col++) {
             const index = row * COLUMNS + col;
