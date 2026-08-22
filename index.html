@@ -647,7 +647,7 @@
     </div>
 
     <div class="hero-buttons">
-      <a class="button hero-secondary" href="#process">Learn More ></a>
+      <a class="button hero-secondary" href="#mission">Learn More ></a>
       <a class="button hero-primary" href="#donate">Get Started</a>
     </div>
 
@@ -910,37 +910,69 @@
     (function loadMosaicFromGitHub() {
       const OWNER = 'Supply-spark';
       const REPO = 'SupplySpark';
-      const FOLDER = 'image';
-      const TILE_COUNT = 16; // how many tiles to fill the mosaic grid with
+      const FOLDER = ''; // repo root — your photos live here, not in a subfolder
+      const EXCLUDE = new Set(['logo.png', 'impact-photo.png', 'backpack-delivery.jpg']); // used elsewhere on the page, keep out of the mosaic pool
+      const COLUMNS = 8;
+      const ROW_HEIGHT = 170;
+      const ROW_GAP = 14;
 
       const mosaic = document.getElementById('heroMosaic');
-      if (!mosaic) return;
+      const hero = document.querySelector('.hero');
+      if (!mosaic || !hero) return;
 
-      fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FOLDER}`)
+      // The mosaic is absolutely positioned with inset:-12% (adds ~24% extra height)
+      // and rotated -6deg + scaled 1.15x, both of which enlarge its effective footprint.
+      // We oversize the row estimate to comfortably cover the hero section at any viewport height.
+      function tilesNeededToFillHero() {
+        const heroHeight = hero.offsetHeight;
+        const effectiveHeight = heroHeight * 1.24 * 1.3; // inset expansion + rotation/scale buffer
+        const rows = Math.ceil(effectiveHeight / (ROW_HEIGHT + ROW_GAP)) + 1;
+        return Math.max(rows, 1) * COLUMNS;
+      }
+
+      let cachedImages = null;
+
+      function renderMosaic() {
+        if (!cachedImages || cachedImages.length === 0) return;
+        const tileCount = tilesNeededToFillHero();
+        mosaic.innerHTML = '';
+        for (let i = 0; i < tileCount; i++) {
+          const file = cachedImages[i % cachedImages.length];
+          const img = document.createElement('img');
+          img.src = file.download_url;
+          img.alt = '';
+          img.width = 220;
+          img.height = 170;
+          mosaic.appendChild(img);
+        }
+      }
+
+      fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FOLDER}`.replace(/\/$/, ''))
         .then(res => {
           if (!res.ok) throw new Error('GitHub API request failed: ' + res.status);
           return res.json();
         })
         .then(files => {
           const imageExtensions = /\.(jpe?g|png|gif|webp)$/i;
-          const images = files.filter(f => f.type === 'file' && imageExtensions.test(f.name));
-
+          const images = files.filter(f =>
+            f.type === 'file' &&
+            imageExtensions.test(f.name) &&
+            !EXCLUDE.has(f.name)
+          );
           if (images.length === 0) return; // keep the fallback images already in the HTML
-
-          mosaic.innerHTML = '';
-          for (let i = 0; i < TILE_COUNT; i++) {
-            const file = images[i % images.length];
-            const img = document.createElement('img');
-            img.src = file.download_url;
-            img.alt = '';
-            img.width = 220;
-            img.height = 170;
-            mosaic.appendChild(img);
-          }
+          cachedImages = images;
+          renderMosaic();
         })
         .catch(err => {
           console.warn('Could not load mosaic images from GitHub, using fallback images.', err);
         });
+
+      // Refill on resize so the mosaic keeps covering the hero at any viewport height.
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(renderMosaic, 200);
+      });
     })();
 
     // Count-up for hero stats — runs immediately since hero is above the fold
