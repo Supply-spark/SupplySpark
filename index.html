@@ -81,12 +81,51 @@
       z-index: 0;
     }
 
+    /* Animate entire horizontal rows in opposite directions */
     .hero-mosaic img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 14px;
-      display: block;
+      will-change: transform;
+    }
+
+    /* ROW 1 - images 1 through 8 → RIGHT */
+    .hero-mosaic img:nth-child(16n + 1),
+    .hero-mosaic img:nth-child(16n + 2),
+    .hero-mosaic img:nth-child(16n + 3),
+    .hero-mosaic img:nth-child(16n + 4),
+    .hero-mosaic img:nth-child(16n + 5),
+    .hero-mosaic img:nth-child(16n + 6),
+    .hero-mosaic img:nth-child(16n + 7),
+    .hero-mosaic img:nth-child(16n + 8) {
+      animation: row-right 8s ease-in-out infinite alternate;
+    }
+
+    /* ROW 2 - images 9 through 16 → LEFT */
+    .hero-mosaic img:nth-child(16n + 9),
+    .hero-mosaic img:nth-child(16n + 10),
+    .hero-mosaic img:nth-child(16n + 11),
+    .hero-mosaic img:nth-child(16n + 12),
+    .hero-mosaic img:nth-child(16n + 13),
+    .hero-mosaic img:nth-child(16n + 14),
+    .hero-mosaic img:nth-child(16n + 15),
+    .hero-mosaic img:nth-child(16n + 16) {
+      animation: row-left 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes row-right {
+      from {
+        transform: translateX(-60px);
+      }
+      to {
+        transform: translateX(60px);
+      }
+    }
+
+    @keyframes row-left {
+      from {
+        transform: translateX(60px);
+      }
+      to {
+        transform: translateX(-60px);
+      }
     }
     /* Move hero mosaic images in opposite directions */
     .hero-mosaic img:nth-child(even) {
