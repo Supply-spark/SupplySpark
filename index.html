@@ -647,7 +647,7 @@
     </div>
 
     <div class="hero-buttons">
-      <a class="button hero-secondary" href="#mission">Learn More ></a>
+      <a class="button hero-secondary" href="#process">Learn More ></a>
       <a class="button hero-primary" href="#donate">Get Started</a>
     </div>
 
@@ -783,7 +783,7 @@
         reach out with upcoming opportunities.
       </p>
 
-      <form class="contact-form" style="margin-top:30px;" action="mailto:supplyspark.org@gmail.com" method="get" enctype="text/plain">
+      <form class="contact-form" id="volunteerForm" style="margin-top:30px;">
         <label for="vname">Name</label>
         <input type="text" id="vname" name="name" placeholder="Your name" required>
 
@@ -864,7 +864,7 @@
   <section id="contact">
     <h2 class="reveal">Contact Us</h2>
     <div class="contact-wrap reveal">
-      <form class="contact-form" action="mailto:supplyspark.org@gmail.com" method="get" enctype="text/plain">
+      <form class="contact-form" id="contactForm">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" placeholder="Your name" required>
 
@@ -910,7 +910,7 @@
     (function loadMosaicFromGitHub() {
       const OWNER = 'Supply-spark';
       const REPO = 'SupplySpark';
-      const FOLDER = ''; // repo root — your photos live here, not in a subfolder
+      const FOLDER = 'image'; // photos are stored in the /image folder
       const EXCLUDE = new Set(['logo.png', 'impact-photo.png', 'backpack-delivery.jpg']); // used elsewhere on the page, keep out of the mosaic pool
       const COLUMNS = 8;
       const ROW_HEIGHT = 170;
@@ -982,6 +982,38 @@
         resizeTimer = setTimeout(renderMosaic, 200);
       });
     })();
+
+    // Email forms
+    // Do not use <form action="mailto:..."> on an HTTPS page.
+    // Instead, build the mailto URL only when the user submits the form.
+    function setupMailForm(formId, subject) {
+      const form = document.getElementById(formId);
+      if (!form) return;
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const data = new FormData(form);
+        const lines = [];
+
+        for (const [key, value] of data.entries()) {
+          if (value !== '') {
+            lines.push(`${key}: ${value}`);
+          }
+        }
+
+        const body = lines.join('\n');
+        const mailto =
+          'mailto:supplyspark.org@gmail.com' +
+          '?subject=' + encodeURIComponent(subject) +
+          '&body=' + encodeURIComponent(body);
+
+        window.location.href = mailto;
+      });
+    }
+
+    setupMailForm('contactForm', 'SupplySpark Contact Form');
+    setupMailForm('volunteerForm', 'SupplySpark Volunteer Application');
 
     // Count-up for hero stats — runs immediately since hero is above the fold
     function animateCount(el) {
