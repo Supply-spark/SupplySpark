@@ -791,7 +791,7 @@
   </nav>
 
   <div class="hero">
-    <div class="hero-mosaic" id="heroMosaic">
+    <div class="hero-mosaic" id="heroMosaic"></div>
       <!-- Populated automatically from the /image folder on GitHub — see script at bottom of page -->
       <img src="impact-photo.png" alt="" width="220" height="170">
       <img src="backpack-delivery.jpg" alt="" width="220" height="170">
@@ -1101,16 +1101,38 @@
 
       function renderMosaic() {
         if (!cachedImages || cachedImages.length === 0) return;
+
         const tileCount = tilesNeededToFillHero();
+        const rowCount = Math.ceil(tileCount / COLUMNS);
+
         mosaic.innerHTML = '';
-        for (let i = 0; i < tileCount; i++) {
-          const file = cachedImages[i % cachedImages.length];
-          const img = document.createElement('img');
-          img.src = file.download_url;
-          img.alt = '';
-          img.width = 220;
-          img.height = 170;
-          mosaic.appendChild(img);
+
+        for (let row = 0; row < rowCount; row++) {
+
+          const rowDiv = document.createElement('div');
+          rowDiv.className = 'mosaic-row';
+
+          // Alternate directions
+          if (row % 2 === 0) {
+            rowDiv.classList.add('move-right');
+          } else {
+            rowDiv.classList.add('move-left');
+          }
+
+          for (let col = 0; col < COLUMNS; col++) {
+            const index = row * COLUMNS + col;
+            const file = cachedImages[index % cachedImages.length];
+
+            const img = document.createElement('img');
+            img.src = file.download_url;
+            img.alt = '';
+            img.width = 220;
+            img.height = 170;
+
+            rowDiv.appendChild(img);
+          }
+
+          mosaic.appendChild(rowDiv);
         }
       }
 
