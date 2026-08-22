@@ -76,47 +76,56 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
+      justify-content: center;
       transform: rotate(-6deg) scale(1.15);
-      transform-origin: center center;
       z-index: 0;
+      overflow: hidden;
       pointer-events: none;
     }
 
     .mosaic-row {
-      display: grid;
-      grid-template-columns: repeat(8, 1fr);
-      grid-auto-rows: 170px;
+      display: flex;
+      flex-direction: row;
       gap: 14px;
-      width: 100%;
-      height: 170px;
-      flex: 0 0 170px;
-      will-change: transform;
+      width: max-content;
+      animation: moveLeft 22s linear infinite;
     }
 
     .mosaic-row img {
-      width: 100%;
-      height: 100%;
+      width: 220px;
+      height: 170px;
       object-fit: cover;
       border-radius: 14px;
       display: block;
+      flex-shrink: 0;
     }
 
+    /* Odd rows: move left */
     .mosaic-row:nth-child(odd) {
-      animation: row-right 7s ease-in-out infinite alternate;
+      animation-name: moveLeft;
     }
 
+    /* Even rows: move right */
     .mosaic-row:nth-child(even) {
-      animation: row-left 7s ease-in-out infinite alternate;
+      animation-name: moveRight;
     }
 
-    @keyframes row-right {
-      from { transform: translateX(-70px); }
-      to { transform: translateX(70px); }
+    @keyframes moveLeft {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
     }
 
-    @keyframes row-left {
-      from { transform: translateX(70px); }
-      to { transform: translateX(-70px); }
+    @keyframes moveRight {
+      from {
+        transform: translateX(-50%);
+      }
+      to {
+        transform: translateX(0);
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -758,6 +767,14 @@
         <img src="264AEB78-B5CE-4E28-AAA1-7A7784B16207.jpeg" alt="" width="220" height="170">
         <img src="2F45AA2C-6D22-45E0-8B0F-E50BCCEC625C.jpeg" alt="" width="220" height="170">
         <img src="34678A27-7233-4260-B623-88385F2E0125.jpeg" alt="" width="220" height="170">
+        <img src="092CDCEA-53F0-4F04-8610-B8792091B323.jpeg" alt="" width="220" height="170">
+        <img src="0F10A935-352A-4842-AD51-F00FF85F571D.jpeg" alt="" width="220" height="170">
+        <img src="1B339151-D463-447F-AEF8-1CA8B16D5AA2.jpeg" alt="" width="220" height="170">
+        <img src="1E83489E-5DA8-457C-89DE-D6167A336F45.jpeg" alt="" width="220" height="170">
+        <img src="25068C33-18C9-4ADC-A2EF-DEFC1CC0A39C.jpeg" alt="" width="220" height="170">
+        <img src="264AEB78-B5CE-4E28-AAA1-7A7784B16207.jpeg" alt="" width="220" height="170">
+        <img src="2F45AA2C-6D22-45E0-8B0F-E50BCCEC625C.jpeg" alt="" width="220" height="170">
+        <img src="34678A27-7233-4260-B623-88385F2E0125.jpeg" alt="" width="220" height="170">
       </div>
       <div class="mosaic-row">
         <img src="35E9F8D0-3BFA-479F-819A-6AA90954D733.jpeg" alt="" width="220" height="170">
@@ -768,6 +785,50 @@
         <img src="3DFD689E-DEB0-4ECF-86E7-347E2985D4BD.jpeg" alt="" width="220" height="170">
         <img src="3F6A8307-3E65-4466-8EBC-92DC9D68DBE3.jpeg" alt="" width="220" height="170">
         <img src="41F1448F-63F6-4840-A47B-76F0945E694B.jpeg" alt="" width="220" height="170">
+        <img src="35E9F8D0-3BFA-479F-819A-6AA90954D733.jpeg" alt="" width="220" height="170">
+        <img src="3602A6BD-DF4E-4EF8-AC3C-DB0D52EC31B2.jpeg" alt="" width="220" height="170">
+        <img src="364E16E6-E795-4323-B7AE-7407C2DF896E.jpeg" alt="" width="220" height="170">
+        <img src="36687682-A592-4CBA-9FC4-99F93B727779.jpeg" alt="" width="220" height="170">
+        <img src="3C0CD933-2629-4AB3-897B-B4295B41CF99.jpeg" alt="" width="220" height="170">
+        <img src="3DFD689E-DEB0-4ECF-86E7-347E2985D4BD.jpeg" alt="" width="220" height="170">
+        <img src="3F6A8307-3E65-4466-8EBC-92DC9D68DBE3.jpeg" alt="" width="220" height="170">
+        <img src="41F1448F-63F6-4840-A47B-76F0945E694B.jpeg" alt="" width="220" height="170">
+      </div>
+      <div class="mosaic-row">
+        <img src="6703D3D4-F9E5-4D6C-A394-44779518EE50.jpeg" alt="" width="220" height="170">
+        <img src="84360CC8-8466-43E7-B2D1-1F1EDD20CBC8.jpeg" alt="" width="220" height="170">
+        <img src="84D99894-91E3-4B75-B5C1-BEB779F9EDA6.jpeg" alt="" width="220" height="170">
+        <img src="8D991688-173C-4A46-9361-A819C6010553.jpeg" alt="" width="220" height="170">
+        <img src="9B2FA07A-D1E6-49A0-8AEE-A1DA5DD8B568.jpeg" alt="" width="220" height="170">
+        <img src="AF4FC06F-F144-4894-B5D5-B60D17F5640A.jpeg" alt="" width="220" height="170">
+        <img src="B2BCFB2F-EB30-4044-B55E-85D7D99FF523.jpeg" alt="" width="220" height="170">
+        <img src="CBC6F18D-F624-4FBB-8931-E5A595B59E19.jpeg" alt="" width="220" height="170">
+        <img src="6703D3D4-F9E5-4D6C-A394-44779518EE50.jpeg" alt="" width="220" height="170">
+        <img src="84360CC8-8466-43E7-B2D1-1F1EDD20CBC8.jpeg" alt="" width="220" height="170">
+        <img src="84D99894-91E3-4B75-B5C1-BEB779F9EDA6.jpeg" alt="" width="220" height="170">
+        <img src="8D991688-173C-4A46-9361-A819C6010553.jpeg" alt="" width="220" height="170">
+        <img src="9B2FA07A-D1E6-49A0-8AEE-A1DA5DD8B568.jpeg" alt="" width="220" height="170">
+        <img src="AF4FC06F-F144-4894-B5D5-B60D17F5640A.jpeg" alt="" width="220" height="170">
+        <img src="B2BCFB2F-EB30-4044-B55E-85D7D99FF523.jpeg" alt="" width="220" height="170">
+        <img src="CBC6F18D-F624-4FBB-8931-E5A595B59E19.jpeg" alt="" width="220" height="170">
+      </div>
+      <div class="mosaic-row">
+        <img src="D7DE43A2-94A5-44B7-8FB0-EEA212778B76.jpeg" alt="" width="220" height="170">
+        <img src="E3982A20-0788-4F73-9AAD-3B72A7785481.jpeg" alt="" width="220" height="170">
+        <img src="E3CE860A-0898-4C24-BCB1-DAD0091D2E86.jpeg" alt="" width="220" height="170">
+        <img src="E440BF64-F269-4A52-9F39-A12A5EBB1EF4.jpeg" alt="" width="220" height="170">
+        <img src="FDF54B4A-639E-4817-B773-08A73817AEF9.jpeg" alt="" width="220" height="170">
+        <img src="092CDCEA-53F0-4F04-8610-B8792091B323.jpeg" alt="" width="220" height="170">
+        <img src="0F10A935-352A-4842-AD51-F00FF85F571D.jpeg" alt="" width="220" height="170">
+        <img src="1B339151-D463-447F-AEF8-1CA8B16D5AA2.jpeg" alt="" width="220" height="170">
+        <img src="D7DE43A2-94A5-44B7-8FB0-EEA212778B76.jpeg" alt="" width="220" height="170">
+        <img src="E3982A20-0788-4F73-9AAD-3B72A7785481.jpeg" alt="" width="220" height="170">
+        <img src="E3CE860A-0898-4C24-BCB1-DAD0091D2E86.jpeg" alt="" width="220" height="170">
+        <img src="E440BF64-F269-4A52-9F39-A12A5EBB1EF4.jpeg" alt="" width="220" height="170">
+        <img src="FDF54B4A-639E-4817-B773-08A73817AEF9.jpeg" alt="" width="220" height="170">
+        <img src="092CDCEA-53F0-4F04-8610-B8792091B323.jpeg" alt="" width="220" height="170">
+        <img src="0F10A935-352A-4842-AD51-F00FF85F571D.jpeg" alt="" width="220" height="170">
+        <img src="1B339151-D463-447F-AEF8-1CA8B16D5AA2.jpeg" alt="" width="220" height="170">
       </div>
     </div>
     <div class="hero-overlay"></div>
