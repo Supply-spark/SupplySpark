@@ -949,22 +949,30 @@
 
       fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${FOLDER}`.replace(/\/$/, ''))
         .then(res => {
+          console.log('[mosaic] GitHub API status:', res.status, res.ok);
           if (!res.ok) throw new Error('GitHub API request failed: ' + res.status);
           return res.json();
         })
         .then(files => {
+          console.log('[mosaic] raw response:', files);
           const imageExtensions = /\.(jpe?g|png|gif|webp)$/i;
           const images = files.filter(f =>
             f.type === 'file' &&
             imageExtensions.test(f.name) &&
             !EXCLUDE.has(f.name)
           );
-          if (images.length === 0) return; // keep the fallback images already in the HTML
+          console.log('[mosaic] filtered image count:', images.length, images.map(f => f.name));
+          if (images.length === 0) {
+            console.warn('[mosaic] No images matched filter — keeping fallback.');
+            return;
+          }
           cachedImages = images;
+          console.log('[mosaic] hero height:', hero.offsetHeight, '-> tiles needed:', tilesNeededToFillHero());
           renderMosaic();
+          console.log('[mosaic] tiles rendered:', mosaic.children.length);
         })
         .catch(err => {
-          console.warn('Could not load mosaic images from GitHub, using fallback images.', err);
+          console.error('[mosaic] FAILED:', err);
         });
 
       // Refill on resize so the mosaic keeps covering the hero at any viewport height.
