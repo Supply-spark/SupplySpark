@@ -129,58 +129,6 @@
       left: 10%;
     }
 
-    /* Centered bottom scroll indicator */
-    .scroll-indicator {
-      position: absolute;
-      left: 50%;
-      bottom: 28px;
-      transform: translateX(-50%);
-      z-index: 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      color: white;
-      font-size: 28px;
-      line-height: 1;
-      opacity: 0.9;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    .scroll-indicator:hover {
-      opacity: 1;
-      transform: translateX(-50%) translateY(-3px);
-    }
-
-    .scroll-indicator .scroll-arrow {
-      display: block;
-      animation: scroll-bounce 1.6s ease-in-out infinite;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.35);
-    }
-
-    .scroll-indicator .scroll-line {
-      width: 1px;
-      height: 34px;
-      margin-top: 6px;
-      background: rgba(255,255,255,0.7);
-    }
-
-    @keyframes scroll-bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(8px);
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .scroll-indicator .scroll-arrow {
-        animation: none;
-      }
-    }
-
     .hero-content {
       position: relative;
       z-index: 2;
@@ -635,6 +583,9 @@
         gap: 12px;
       }
 
+      .hero-mosaic {
+        grid-template-columns: repeat(5, 1fr);
+      }
     }
 
     .logo-title {
@@ -699,11 +650,6 @@
       <a class="button hero-secondary" href="#mission">Learn More ></a>
       <a class="button hero-primary" href="#donate">Get Started</a>
     </div>
-
-    <a class="scroll-indicator" href="#mission" aria-label="Scroll to our mission">
-      <span class="scroll-arrow">↓</span>
-      <span class="scroll-line"></span>
-    </a>
 
     <div class="hero-stats">
       <div class="hero-stat">
