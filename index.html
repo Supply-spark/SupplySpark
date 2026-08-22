@@ -111,21 +111,12 @@
     }
 
     @keyframes moveLeft {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-50%);
-      }
+      from { transform: translateX(0); }
+      to   { transform: translateX(calc(-50% - 7px)); }
     }
-
     @keyframes moveRight {
-      from {
-        transform: translateX(-50%);
-      }
-      to {
-        transform: translateX(0);
-      }
+      from { transform: translateX(calc(-50% - 7px)); }
+      to   { transform: translateX(0); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -845,7 +836,7 @@
     </div>
 
     <div class="hero-buttons">
-      <a class="button hero-secondary" href="#mission">Learn More ></a>
+      <a class="button hero-secondary" href="#process">Learn More ></a>
       <a class="button hero-primary" href="#donate">Get Started</a>
     </div>
 
@@ -884,40 +875,48 @@
     </div>
   </section>
 
-  <section id="process">
+   <section id="process">
     <div class="panel panel-blue reveal">
       <h2>Our Process</h2>
-      <div class="cards">
-        <div class="card">
+      <div class="cards cards-2col">
+        <div class="card process-card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7C9 7 8 5.5 8 4a2 2 0 0 1 4 0c0-1.5-1-2.5-2-2.5"/><path d="M12 7c3 0 4-1.5 4-3a2 2 0 0 0-4 0"/></svg>
           </div>
-          <h3>1. Community Donations</h3>
-          <p>We collect school supplies and financial donations from individuals, businesses, and local organizations.</p>
+          <div class="process-card-text">
+            <h3>1. Community Donations</h3>
+            <p>We collect school supplies and financial donations from individuals, businesses, and local organizations.</p>
+          </div>
         </div>
 
-        <div class="card">
+        <div class="card process-card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
           </div>
-          <h3>2. Organizing Supplies</h3>
-          <p>Volunteers sort, package, and prepare supplies for distribution.</p>
+          <div class="process-card-text">
+            <h3>2. Organizing Supplies</h3>
+            <p>Volunteers sort, package, and prepare supplies for distribution.</p>
+          </div>
         </div>
 
-        <div class="card">
+        <div class="card process-card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5 3 9l2-2 3 3 2-2-3-3 2-2 6.5 6.5"/><path d="M15.5 9.5 21 15l-2 2-3-3-2 2 3 3-2 2-6.5-6.5"/></svg>
           </div>
-          <h3>3. Partnering With Organizations</h3>
-          <p>We work with foster agencies, schools, shelters, and community groups to identify students in need.</p>
+          <div class="process-card-text">
+            <h3>3. Partnering With Organizations</h3>
+            <p>We work with foster agencies, schools, shelters, and community groups to identify students in need.</p>
+          </div>
         </div>
 
-        <div class="card">
+        <div class="card process-card">
           <div class="card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="14" height="10" rx="1"/><path d="M15 10h4l3 3v4h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="17" cy="19" r="2"/></svg>
           </div>
-          <h3>4. Delivering Supplies</h3>
-          <p>Supplies are distributed directly to foster children before and during the school year.</p>
+          <div class="process-card-text">
+            <h3>4. Delivering Supplies</h3>
+            <p>Supplies are distributed directly to foster children before and during the school year.</p>
+          </div>
         </div>
       </div>
     </div>
