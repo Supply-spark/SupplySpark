@@ -24,6 +24,7 @@
       --coral: #fb7185;
       --ink: #111827;
       --paper: #f8fafc;
+      --orange:#ffaa00;
     }
 
     html {
@@ -443,14 +444,6 @@
       border-top-color: var(--pink);
     }
 
-    .cards .card:nth-child(4n+3) {
-      border-top-color: var(--teal);
-    }
-
-    .cards .card:nth-child(4n+4) {
-      border-top-color: var(--purple);
-    }
-
     .card-icon {
       width: 48px;
       height: 48px;
@@ -464,6 +457,59 @@
 
     .cards .card:nth-child(4n+2) .card-icon {
       background: #fce7f3;
+    }
+
+    /* Founder cards */
+    .founder-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 10px;
+    }
+
+    .founder-card {
+      background: white;
+      padding: 40px 28px;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      border-top: 4px solid var(--yellow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .founder-cards .founder-card:nth-child(2) {
+      border-top-color: var(--pink);
+    }
+
+    .founder-cards .founder-card:nth-child(3) {
+      border-top-color: var(--teal);
+    }
+
+    .founder-pfp {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #f1f5f9;
+      margin-bottom: 18px;
+    }
+
+    .founder-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .founder-card p {
+      font-size: 15px;
+      color: #64748b;
+      margin: 0;
+    }
+
+    @media (max-width: 800px) {
+      .founder-cards {
+        grid-template-columns: 1fr;
+      }
     }
 
     .cards .card:nth-child(4n+3) .card-icon {
@@ -492,28 +538,250 @@
       max-width: 65ch;
     }
 
-    .impact-grid {
+    /* Impact section: full-bleed cork background (like Process), content constrained to 1100px */
+    #impact {
+      max-width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    .panel-cork {
+      border-radius: 0;
+      color: var(--ink);
+      background-color: #b3875a;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(0,0,0,0.14) 0%, transparent 45%),
+        radial-gradient(circle at 85% 10%, rgba(0,0,0,0.12) 0%, transparent 40%),
+        radial-gradient(circle at 60% 80%, rgba(0,0,0,0.12) 0%, transparent 45%),
+        radial-gradient(circle at 20% 90%, rgba(255,255,255,0.08) 0%, transparent 35%),
+        radial-gradient(circle at 45% 45%, rgba(0,0,0,0.07) 0%, transparent 50%),
+        radial-gradient(rgba(0,0,0,0.18) 1px, transparent 1px),
+        radial-gradient(rgba(255,255,255,0.09) 1px, transparent 1px);
+      background-size: auto, auto, auto, auto, auto, 6px 6px, 9px 9px;
+      background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 3px 4px;
+      box-shadow: inset 0 16px 34px rgba(0,0,0,0.4), inset 0 -16px 34px rgba(0,0,0,0.4);
+    }
+
+    #impact .impact-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 70px 20px;
+    }
+
+    #impact h2 {
+      color: var(--ink);
+      font-size: 52px;
+    }
+
+    .bulletin-board {
       display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 40px;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 56px;
+      row-gap: 90px;
+      margin-top: 60px;
+    }
+
+    .bulletin-card:nth-child(3) {
+      grid-column: 1 / -1;
+      max-width: calc(50% - 28px);
+      margin: 0 auto;
+    }
+
+    .bulletin-card {
+      position: relative;
+      display: flex;
       align-items: center;
-      margin-top: 30px;
+      gap: 20px;
+      background: #fdfaf3;
+      border-radius: 8px;
+      padding: 26px;
+      transform-origin: top center;
+      opacity: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .impact-photo {
-      border-radius: 20px;
+    .bulletin-card.tilt-1 {
+      box-shadow:
+        0 0 0 3px rgba(255,255,255,0.55),
+        0 0 24px 6px rgba(226,229,233,0.6),
+        0 18px 30px rgba(0,0,0,0.4);
+    }
+    .bulletin-card.tilt-1:hover {
+      transform: rotate(-1deg) translateY(-22px);
+      box-shadow:
+        0 0 0 3px rgba(255,255,255,0.75),
+        0 0 32px 10px rgba(226,229,233,0.8),
+        0 22px 36px rgba(0,0,0,0.45);
+    }
+
+    .bulletin-card.tilt-2 {
+      box-shadow:
+        0 0 0 3px rgba(255,255,255,0.55),
+        0 0 24px 6px rgba(226,229,233,0.6),
+        0 18px 30px rgba(0,0,0,0.4);
+    }
+    .bulletin-card.tilt-2:hover {
+      transform: rotate(1deg) translateY(20px);
+      box-shadow:
+        0 0 0 3px rgba(255,255,255,0.75),
+        0 0 32px 10px rgba(226,229,233,0.8),
+        0 22px 36px rgba(0,0,0,0.45);
+    }
+
+    .bulletin-card.tilt-3 {
+      box-shadow:
+        0 0 0 3px rgba(255,255,255,0.55),
+        0 0 24px 6px rgba(226,229,233,0.6),
+        0 18px 30px rgba(0,0,0,0.4);
+    }
+    .bulletin-card.tilt-3:hover {
+      transform: rotate(0deg) translateY(-22px);
+      box-shadow:
+        0 0 0 3px rgba(255,255,255,0.75),
+        0 0 32px 10px rgba(226,229,233,0.8),
+        0 22px 36px rgba(0,0,0,0.45);
+    }
+
+    .bulletin-card.swing-visible.tilt-1 {
+      animation: swingIn1 2.2s ease-in-out forwards;
+    }
+    .bulletin-card.swing-visible.tilt-2 {
+      animation: swingIn2 2.2s ease-in-out forwards;
+      animation-delay: 0.25s;
+    }
+    .bulletin-card.swing-visible.tilt-3 {
+      animation: swingIn3 2.2s ease-in-out forwards;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes swingIn1 {
+      0%   { opacity: 0; transform: rotate(-55deg) translateY(-70px); }
+      12%  { opacity: 1; transform: rotate(28deg) translateY(-14px); }
+      26%  { transform: rotate(-20deg) translateY(-14px); }
+      40%  { transform: rotate(14deg) translateY(-14px); }
+      54%  { transform: rotate(-10deg) translateY(-14px); }
+      66%  { transform: rotate(6deg) translateY(-14px); }
+      77%  { transform: rotate(-5deg) translateY(-14px); }
+      87%  { transform: rotate(-3deg) translateY(-14px); }
+      100% { opacity: 1; transform: rotate(-4deg) translateY(-14px); }
+    }
+
+    @keyframes swingIn2 {
+      0%   { opacity: 0; transform: rotate(-55deg) translateY(80px); }
+      12%  { opacity: 1; transform: rotate(30deg) translateY(24px); }
+      26%  { transform: rotate(-21deg) translateY(24px); }
+      40%  { transform: rotate(15deg) translateY(24px); }
+      54%  { transform: rotate(-10deg) translateY(24px); }
+      66%  { transform: rotate(7deg) translateY(24px); }
+      77%  { transform: rotate(-4deg) translateY(24px); }
+      87%  { transform: rotate(4deg) translateY(24px); }
+      100% { opacity: 1; transform: rotate(3deg) translateY(24px); }
+    }
+
+    @keyframes swingIn3 {
+      0%   { opacity: 0; transform: rotate(50deg) translateY(-70px); }
+      12%  { opacity: 1; transform: rotate(-26deg) translateY(-14px); }
+      26%  { transform: rotate(18deg) translateY(-14px); }
+      40%  { transform: rotate(-13deg) translateY(-14px); }
+      54%  { transform: rotate(9deg) translateY(-14px); }
+      66%  { transform: rotate(-6deg) translateY(-14px); }
+      77%  { transform: rotate(4deg) translateY(-14px); }
+      87%  { transform: rotate(-3deg) translateY(-14px); }
+      100% { opacity: 1; transform: rotate(-2deg) translateY(-14px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bulletin-card {
+        opacity: 1;
+      }
+      .bulletin-card.tilt-1 { transform: rotate(-4deg) translateY(-14px); animation: none; }
+      .bulletin-card.tilt-2 { transform: rotate(3deg) translateY(24px); animation: none; }
+      .bulletin-card.tilt-3 { transform: rotate(-2deg) translateY(-14px); animation: none; }
+    }
+
+    .bulletin-pin {
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 32% 28%, #ffb3b3 0%, #ff5c5c 35%, #c0201f 75%, #7f1414 100%);
+      box-shadow:
+        0 5px 8px rgba(0,0,0,0.5),
+        inset 0 -3px 5px rgba(0,0,0,0.4),
+        inset 0 2px 4px rgba(255,255,255,0.55);
+      border: 1px solid rgba(0,0,0,0.2);
+      z-index: 2;
+    }
+
+    .bulletin-pin::after {
+      content: '';
+      position: absolute;
+      top: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 6px;
+      background: rgba(0,0,0,0.28);
+      border-radius: 50%;
+      filter: blur(2.5px);
+    }
+
+    .bulletin-photo {
+      flex-shrink: 0;
+      width: 128px;
+      height: 128px;
+      border-radius: 6px;
       overflow: hidden;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.18);
     }
 
-    .impact-photo img {
+    .bulletin-photo img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
     }
 
+    .bulletin-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+    }
+
+    .bulletin-text h3 {
+      font-size: 21px;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+
+    .bulletin-text p {
+      font-size: 14px;
+      color: #64748b;
+      margin: 0;
+      max-width: none;
+    }
+
     @media (max-width: 800px) {
-      .impact-grid {
+      .bulletin-board {
         grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .bulletin-card:nth-child(3) {
+        grid-column: auto;
+        max-width: 100%;
+      }
+
+      .bulletin-card.tilt-1,
+      .bulletin-card.tilt-2,
+      .bulletin-card.tilt-3 {
+        transform: none !important;
+        animation: none !important;
+        opacity: 1;
       }
     }
 
@@ -653,7 +921,7 @@
     }
 
     .mission-heading .accent {
-      color: var(--coral);
+      color: var(--blue);
     }
 
     .mission-sub {
@@ -803,6 +1071,10 @@
       position: relative;
       margin-top: 30px;
       height: 900px;
+    }
+
+    .process-heading .accent {
+      color: var(--orange);
     }
 
     .process-paths {
@@ -1024,13 +1296,17 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
     }
 
     .logo-title img {
       width: 42px;
       height: 42px;
       display: block;
-      object-fit: contain;
+      object-fit: cover;
+      border-radius: 50%;
     }
 
     .logo-title h2 {
@@ -1047,7 +1323,6 @@
     .contact-direct,
     .contact-form,
     .donation-note,
-    .impact-grid,
     footer {
       text-align: center;
     }
@@ -1077,19 +1352,15 @@
     section h3 {
       text-align: center;
     }
-
-    .impact-grid > div {
-      text-align: center;
-    }
   </style>
 </head>
 
-<body>
+<body id="top">
   <nav>
-    <div class="logo-title"><img src="logo.png" alt="SupplySpark Logo"><h2>SupplySpark</h2></div>
+    <a class="logo-title" href="#top"><img src="logo.png" alt="SupplySpark Logo"><h2>SupplySpark</h2></a>
     <div class="nav-right">
       <div class="nav-links">
-        <a class="nav-link" href="#mission">Mission</a>
+        <a class="nav-link" href="#mission">About Us</a>
         <a class="nav-link" href="#process">Process</a>
         <a class="nav-link" href="#impact">Impact</a>
         <a class="nav-link" href="#volunteer">Volunteer</a>
@@ -1219,7 +1490,7 @@
   <section id="mission">
     <div class="reveal" style="text-align:center;">
       <div class="mission-writing" id="missionWriting">
-        <h2 class="mission-heading">Our <span class="accent">Reason</span></h2>
+        <h2 class="mission-heading">Our <span class="accent">Mission</span></h2>
         <span class="pencil-icon">
           <svg viewBox="-4 -4 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
@@ -1280,7 +1551,7 @@
    <section id="process">
     <div class="panel panel-blue reveal">
       <div class="process-inner">
-      <h2>Our Process</h2>
+      <h2 class="process-heading">How It's <span class="accent">Done</span></h2>
 
       <div class="process-track" id="processTrack">
         <svg class="process-paths" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -1340,26 +1611,43 @@
   </section>
 
   <section id="impact">
-    <div class="highlight reveal">
-      <h2>Our Impact</h2>
-      <p>
-        We're just getting started, but the numbers are already real. Every donation goes straight to
-        supplies for kids who need them, and here's what that's added up to so far.
-      </p>
+    <div class="panel-cork reveal">
+      <div class="impact-inner">
+        <h2>Our Impact</h2>
 
-      <div class="impact-grid">
-        <div class="impact-photo">
-          <img src="impact-photo.png" alt="SupplySpark founders and a volunteer holding donated backpacks at Bithiah's Family Services">
-        </div>
-        <div>
-          <p style="max-width:100%; font-size:14px; color:#cbd5e1;">
-            Partner foster homes: Bithiah's Family Services, SerenityKids, and Life Steps Foundation.
-          </p>
-          <ul>
-            <li>Expanding partnerships with local schools and foster organizations</li>
-            <li>Hosting annual school supply drives</li>
-            <li>Building long-term support programs for students</li>
-          </ul>
+        <div class="bulletin-board">
+          <div class="bulletin-card tilt-1">
+            <span class="bulletin-pin"></span>
+            <div class="bulletin-photo">
+              <img src="impact-photo.png" alt="First Donation">
+            </div>
+            <div class="bulletin-text">
+              <h3>Bithiah's Family Services</h3>
+              <p>Delivered 24 Supply Kits</p>
+            </div>
+          </div>
+
+          <div class="bulletin-card tilt-2">
+            <span class="bulletin-pin"></span>
+            <div class="bulletin-photo">
+              <img src="delivery-photo.png" alt="Second Donation">
+            </div>
+            <div class="bulletin-text">
+              <h3>SerenityKids</h3>
+              <p>Delivered 7 Supply Kits</p>
+            </div>
+          </div>
+
+          <div class="bulletin-card tilt-3">
+            <span class="bulletin-pin"></span>
+            <div class="bulletin-photo">
+              <img src="impact-photo3.jpeg" alt="Third Donation">
+            </div>
+            <div class="bulletin-text">
+              <h3>Life Steps Foundation</h3>
+              <p>Delivered 65 Supply Kits</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1438,23 +1726,24 @@
 <section>
   <h1 class="reveal" style="font-size:56px; margin-bottom:32px;">About the Founders</h1>
 
-  <div class="reveal">
-    <h2>Head of Operations</h2>
-    <p>
-      SupplySpark was started by Byron Chen and Owen Huang to help foster children gain access to
-      the school supplies they need to succeed. Their goal is to build a strong community effort that
-      gives foster children the tools and encouragement they deserve.
-    </p>
-  </div>
+  <div class="founder-cards reveal">
+    <div class="founder-card">
+      <img class="founder-pfp" src="founder-byron.png" alt="Byron Chen">
+      <h3>Byron Chen</h3>
+      <p>Co-founder and Head Of Operations for SupplySpark to help foster children gain access to the school supplies they need to succeed.</p>
+    </div>
 
-  <br><br>
+    <div class="founder-card">
+      <img class="founder-pfp" src="founder-owen.png" alt="Owen Huang">
+      <h3>Owen Huang</h3>
+      <p>Co-founder and Head Of Operations for SupplySpark to build a strong community effort that gives foster children the tools and encouragement they deserve.</p>
+    </div>
 
-  <div class="reveal">
-    <h2>Head of Technology</h2>
-    <p>
-      Our technology team is led by Braydon Gunawan and Arick Hong, who work to build and maintain
-      SupplySpark's digital outreach, ensuring our mission reaches as many people as possible.
-    </p>
+    <div class="founder-card">
+      <img class="founder-pfp" src="founder-braydon.png" alt="Braydon Gunawan">
+      <h3>Braydon Gunawan</h3>
+      <p>Co-Founder and Leader of SupplySpark's technology team, building and maintaining our digital outreach.</p>
+    </div>
   </div>
 </section>
 
@@ -1628,6 +1917,20 @@
     }, { threshold: 0.35 });
     processPathEls.forEach(el => processPathObserver.observe(el));
 
+    // Bulletin board: swing cards in when the impact section scrolls into view
+    const bulletinCards = document.querySelectorAll('.bulletin-card');
+    if (bulletinCards.length) {
+      const bulletinObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('swing-visible');
+            bulletinObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      bulletinCards.forEach(card => bulletinObserver.observe(card));
+    }
+
     // Pencil-writing animation for the mission heading
     const missionWriting = document.getElementById('missionWriting');
     if (missionWriting) {
@@ -1648,6 +1951,21 @@
         btn.classList.remove('pop');
         void btn.offsetWidth; // restart animation
         btn.classList.add('pop');
+      });
+    });
+
+    // Center Mission/Impact sections in the viewport when jumped to, instead of aligning to the top
+    document.querySelectorAll('a[href="#mission"], a[href="#impact"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href');
+        const target =
+          targetId === '#impact'
+            ? document.querySelector('#impact .panel-cork')
+            : document.querySelector('#mission .reveal');
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        history.pushState(null, '', targetId);
       });
     });
 
