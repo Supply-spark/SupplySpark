@@ -57,6 +57,36 @@
       transform: translateY(0);
     }
 
+    /* Drop-down + bounce reveal (used for mission cards), staggered one at a time */
+    .drop-reveal {
+      opacity: 0;
+      transform: translateY(-80px);
+    }
+
+    .drop-reveal.visible {
+      animation: dropBounce 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes dropBounce {
+      0%   { opacity: 0; transform: translateY(-80px); }
+      60%  { opacity: 1; transform: translateY(6px); }
+      80%  { transform: translateY(-3px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .mission-cards .mission-card:nth-child(1).drop-reveal.visible { animation-delay: 0s; }
+    .mission-cards .mission-card:nth-child(2).drop-reveal.visible { animation-delay: 0.15s; }
+    .mission-cards .mission-card:nth-child(3).drop-reveal.visible { animation-delay: 0.3s; }
+    .mission-cards .mission-card:nth-child(4).drop-reveal.visible { animation-delay: 0.45s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .drop-reveal.visible {
+        animation: none;
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     /* Mosaic hero */
     .hero {
       position: relative;
@@ -277,7 +307,9 @@
     }
 
     nav {
-      background: white;
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       padding: 18px 40px;
       display: flex;
       justify-content: space-between;
@@ -563,7 +595,331 @@
       color: white;
     }
 
-    /* Forms (contact + volunteer) */
+    /* Mission heading with pencil-writing animation */
+    .mission-writing {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+
+    .mission-heading {
+      font-size: 52px;
+      margin-bottom: 0;
+      clip-path: inset(0 100% 0 0);
+    }
+
+    .mission-writing.write-visible .mission-heading {
+      animation: writeReveal 1.3s ease forwards;
+    }
+
+    @keyframes writeReveal {
+      to { clip-path: inset(0 0 0 0); }
+    }
+
+    .pencil-icon {
+      position: absolute;
+      top: 50%;
+      left: 0%;
+      width: 30px;
+      height: 30px;
+      margin-top: -15px;
+      transform: rotate(-25deg);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .pencil-icon svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      stroke: var(--yellow);
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+
+    .mission-writing.write-visible .pencil-icon {
+      animation: pencilMove 1.3s ease forwards;
+    }
+
+    @keyframes pencilMove {
+      0% { left: 0%; opacity: 1; }
+      92% { opacity: 1; }
+      100% { left: 100%; opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .mission-heading { clip-path: inset(0 0 0 0) !important; }
+      .pencil-icon { display: none !important; }
+    }
+
+    .mission-heading .accent {
+      color: var(--coral);
+    }
+
+    .mission-sub {
+      font-size: 18px;
+      color: #64748b;
+      margin: 0 auto 50px;
+    }
+
+    /* 2x2 mission cards */
+    .mission-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      text-align: left;
+    }
+
+    .mission-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 32px;
+      text-align: left;
+      transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .mission-card .card-icon {
+      margin: 0;
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: #f1f5f9;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .mission-card .card-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: #94a3b8;
+      transition: stroke 0.3s ease, filter 0.3s ease;
+    }
+
+    .mission-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .mission-card:hover .card-icon {
+      transform: scale(1.15);
+    }
+
+    /* Per-card accent color, only fully applied on hover */
+    .mission-cards .mission-card:nth-child(4n+1):hover {
+      border-color: var(--yellow);
+      box-shadow: 0 16px 36px rgba(250,204,21,0.30);
+    }
+    .mission-cards .mission-card:nth-child(4n+1):hover .card-icon {
+      background: var(--yellow);
+      box-shadow: 0 8px 20px rgba(250,204,21,0.5);
+    }
+    .mission-cards .mission-card:nth-child(4n+1):hover .card-icon svg {
+      stroke: var(--ink);
+      filter: drop-shadow(0 0 4px rgba(17,24,39,0.5));
+    }
+
+    .mission-cards .mission-card:nth-child(4n+2):hover {
+      border-color: var(--pink);
+      box-shadow: 0 16px 36px rgba(244,114,182,0.30);
+    }
+    .mission-cards .mission-card:nth-child(4n+2):hover .card-icon {
+      background: var(--pink);
+      box-shadow: 0 8px 20px rgba(244,114,182,0.5);
+    }
+    .mission-cards .mission-card:nth-child(4n+2):hover .card-icon svg {
+      stroke: #fff;
+      filter: drop-shadow(0 0 4px rgba(255,255,255,0.9));
+    }
+
+    .mission-cards .mission-card:nth-child(4n+3):hover {
+      border-color: var(--teal);
+      box-shadow: 0 16px 36px rgba(45,212,191,0.30);
+    }
+    .mission-cards .mission-card:nth-child(4n+3):hover .card-icon {
+      background: var(--teal);
+      box-shadow: 0 8px 20px rgba(45,212,191,0.5);
+    }
+    .mission-cards .mission-card:nth-child(4n+3):hover .card-icon svg {
+      stroke: #fff;
+      filter: drop-shadow(0 0 4px rgba(255,255,255,0.9));
+    }
+
+    .mission-cards .mission-card:nth-child(4n+4):hover {
+      border-color: var(--purple);
+      box-shadow: 0 16px 36px rgba(167,139,250,0.30);
+    }
+    .mission-cards .mission-card:nth-child(4n+4):hover .card-icon {
+      background: var(--purple);
+      box-shadow: 0 8px 20px rgba(167,139,250,0.5);
+    }
+    .mission-cards .mission-card:nth-child(4n+4):hover .card-icon svg {
+      stroke: #fff;
+      filter: drop-shadow(0 0 4px rgba(255,255,255,0.9));
+    }
+
+    .mission-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .mission-card p {
+      font-size: 15px;
+      color: #64748b;
+      margin: 0;
+    }
+
+    @media (max-width: 800px) {
+      .mission-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Process section: full-bleed grey background, constrained inner content */
+    #process {
+      max-width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    #process .panel-blue {
+      border-radius: 0;
+      background: #eef1f5;
+    }
+
+    #process .process-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 70px 20px;
+    }
+
+    #process .process-inner > h2 {
+      font-size: 52px;
+    }
+
+    /* Process map: zigzag boxes connected by dotted lines */
+    .process-track {
+      position: relative;
+      margin-top: 30px;
+      height: 900px;
+    }
+
+    .process-paths {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .process-path {
+      fill: none;
+      stroke: var(--ink);
+      stroke-opacity: 0.4;
+      stroke-width: 0.6;
+      stroke-dasharray: 1.4 2.2;
+      stroke-linecap: round;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .process-path.visible {
+      opacity: 1;
+    }
+
+    .process-steps {
+      position: absolute;
+      inset: 0;
+    }
+
+    .process-step {
+      position: absolute;
+      width: 46%;
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 28px;
+      text-align: center;
+      transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .process-step:hover {
+      transform: translateY(-2px);
+    }
+
+    .process-step-top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .process-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .process-step .card-icon {
+      margin: 0;
+      width: 48px;
+      height: 48px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .process-step .card-icon svg {
+      transition: stroke 0.3s ease, filter 0.3s ease;
+    }
+
+    .process-step:hover .card-icon {
+      transform: scale(1.15);
+    }
+
+    .step-1 { left: 0%; top: 0%; }
+    .step-2 { left: 54%; top: 26%; }
+    .step-3 { left: 0%; top: 52%; }
+    .step-4 { left: 54%; top: 78%; }
+
+    .step-1 .process-num, .step-1 .card-icon { background: var(--yellow); }
+    .step-2 .process-num, .step-2 .card-icon { background: var(--pink); }
+    .step-3 .process-num, .step-3 .card-icon { background: var(--teal); }
+    .step-4 .process-num, .step-4 .card-icon { background: var(--purple); }
+
+    .step-1 .card-icon svg { stroke: var(--ink); }
+    .step-2 .card-icon svg,
+    .step-3 .card-icon svg,
+    .step-4 .card-icon svg { stroke: white; }
+
+    .step-1:hover { border-color: var(--yellow); box-shadow: 0 16px 36px rgba(250,204,21,0.30); }
+    .step-1:hover .card-icon { box-shadow: 0 8px 20px rgba(250,204,21,0.5); }
+    .step-1:hover .card-icon svg { filter: drop-shadow(0 0 4px rgba(17,24,39,0.5)); }
+
+    .step-2:hover { border-color: var(--pink); box-shadow: 0 16px 36px rgba(244,114,182,0.30); }
+    .step-2:hover .card-icon { box-shadow: 0 8px 20px rgba(244,114,182,0.5); }
+    .step-2:hover .card-icon svg { filter: drop-shadow(0 0 4px rgba(255,255,255,0.9)); }
+
+    .step-3:hover { border-color: var(--teal); box-shadow: 0 16px 36px rgba(45,212,191,0.30); }
+    .step-3:hover .card-icon { box-shadow: 0 8px 20px rgba(45,212,191,0.5); }
+    .step-3:hover .card-icon svg { filter: drop-shadow(0 0 4px rgba(255,255,255,0.9)); }
+
+    .step-4:hover { border-color: var(--purple); box-shadow: 0 16px 36px rgba(167,139,250,0.30); }
+    .step-4:hover .card-icon { box-shadow: 0 8px 20px rgba(167,139,250,0.5); }
+    .step-4:hover .card-icon svg { filter: drop-shadow(0 0 4px rgba(255,255,255,0.9)); }
+
+    @media (max-width: 800px) {
+      .process-track { height: auto; }
+      .process-steps { position: static; }
+      .process-step { position: static !important; width: 100% !important; margin-bottom: 20px; }
+      .process-paths { display: none; }
+    }
     .contact-wrap {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -861,63 +1217,124 @@
   </div>
 
   <section id="mission">
-    <div class="reveal">
-      <h2>Our Mission</h2>
-      <p>
-        Our mission is to support foster children by providing essential school supplies that help them
-        succeed academically and feel confident in the classroom.
+    <div class="reveal" style="text-align:center;">
+      <div class="mission-writing" id="missionWriting">
+        <h2 class="mission-heading">Our <span class="accent">Reason</span></h2>
+        <span class="pencil-icon">
+          <svg viewBox="-4 -4 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+            <path d="M15 5l4 4"/>
+          </svg>
+        </span>
+      </div>
+      <p class="mission-sub">
+        Our mission is to support foster children by providing essential school supplies that help them succeed academically and feel
+        confident in the classroom. We aim to create equal opportunities for foster students by ensuring every child has access to the
+        tools they need to learn, grow, and reach their full potential.
       </p>
-      <br />
-      <p>
-        We aim to create equal opportunities for foster students by ensuring every child has access to
-        the tools they need to learn, grow, and reach their full potential.
-      </p>
+
+      <div class="mission-cards">
+        <div class="mission-card drop-reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+          </div>
+          <div>
+            <h3>Supplies With Purpose</h3>
+            <p>Every backpack we pack is filled with the notebooks, pencils, and tools a student actually needs to start the year ready.</p>
+          </div>
+        </div>
+
+        <div class="mission-card drop-reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 3 5 6.5 5c2 0 3.5 1.5 4 2.5.5-1 2-2.5 4-2.5C18 5 20.5 8.5 18.5 12.5 16 16.65 12 21 12 21z"/></svg>
+          </div>
+          <div>
+            <h3>Building Confidence</h3>
+            <p>Having the right supplies helps foster kids feel like they belong in the classroom, not singled out.</p>
+          </div>
+        </div>
+
+        <div class="mission-card drop-reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20c0-3 2.7-5 6-5s6 2 6 5"/><path d="M14.5 15c2.5.3 4.5 2 4.5 5"/></svg>
+          </div>
+          <div>
+            <h3>Student-Led Initiative</h3>
+            <p>Founded and run by students who wanted to do something real for foster kids in their own community.</p>
+          </div>
+        </div>
+
+        <div class="mission-card drop-reveal">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-6h6v6"/></svg>
+          </div>
+          <div>
+            <h3>Community Partnerships</h3>
+            <p>We work directly with foster homes and agencies to get supplies into the hands of the students who need them most.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
    <section id="process">
     <div class="panel panel-blue reveal">
+      <div class="process-inner">
       <h2>Our Process</h2>
-      <div class="cards cards-2col">
-        <div class="card process-card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7C9 7 8 5.5 8 4a2 2 0 0 1 4 0c0-1.5-1-2.5-2-2.5"/><path d="M12 7c3 0 4-1.5 4-3a2 2 0 0 0-4 0"/></svg>
-          </div>
-          <div class="process-card-text">
-            <h3>1. Community Donations</h3>
+
+      <div class="process-track" id="processTrack">
+        <svg class="process-paths" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path id="processPath1" class="process-path" d="M46,11 Q65,11 77,26"/>
+          <path id="processPath2" class="process-path" d="M54,37 Q35,37 23,52"/>
+          <path id="processPath3" class="process-path" d="M46,63 Q65,63 77,78"/>
+        </svg>
+
+        <div class="process-steps">
+          <div class="process-step step-1 drop-reveal" id="processStep1">
+            <div class="process-step-top">
+              <div class="process-num">1</div>
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7C9 7 8 5.5 8 4a2 2 0 0 1 4 0c0-1.5-1-2.5-2-2.5"/><path d="M12 7c3 0 4-1.5 4-3a2 2 0 0 0-4 0"/></svg>
+              </div>
+            </div>
+            <h3>Community Donations</h3>
             <p>We collect school supplies and financial donations from individuals, businesses, and local organizations.</p>
           </div>
-        </div>
 
-        <div class="card process-card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-          </div>
-          <div class="process-card-text">
-            <h3>2. Organizing Supplies</h3>
+          <div class="process-step step-2 drop-reveal" id="processStep2">
+            <div class="process-step-top">
+              <div class="process-num">2</div>
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+              </div>
+            </div>
+            <h3>Organizing Supplies</h3>
             <p>Volunteers sort, package, and prepare supplies for distribution.</p>
           </div>
-        </div>
 
-        <div class="card process-card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5 3 9l2-2 3 3 2-2-3-3 2-2 6.5 6.5"/><path d="M15.5 9.5 21 15l-2 2-3-3-2 2 3 3-2 2-6.5-6.5"/></svg>
-          </div>
-          <div class="process-card-text">
-            <h3>3. Partnering With Organizations</h3>
+          <div class="process-step step-3 drop-reveal" id="processStep3">
+            <div class="process-step-top">
+              <div class="process-num">3</div>
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5 3 9l2-2 3 3 2-2-3-3 2-2 6.5 6.5"/><path d="M15.5 9.5 21 15l-2 2-3-3-2 2 3 3-2 2-6.5-6.5"/></svg>
+              </div>
+            </div>
+            <h3>Partnering With Organizations</h3>
             <p>We work with foster agencies, schools, shelters, and community groups to identify students in need.</p>
           </div>
-        </div>
 
-        <div class="card process-card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="14" height="10" rx="1"/><path d="M15 10h4l3 3v4h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="17" cy="19" r="2"/></svg>
-          </div>
-          <div class="process-card-text">
-            <h3>4. Delivering Supplies</h3>
+          <div class="process-step step-4 drop-reveal" id="processStep4">
+            <div class="process-step-top">
+              <div class="process-num">4</div>
+              <div class="card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="14" height="10" rx="1"/><path d="M15 10h4l3 3v4h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="17" cy="19" r="2"/></svg>
+              </div>
+            </div>
+            <h3>Delivering Supplies</h3>
             <p>Supplies are distributed directly to foster children before and during the school year.</p>
           </div>
         </div>
+      </div>
       </div>
     </div>
   </section>
@@ -1174,8 +1591,8 @@
       if (raisedInlineEl) raisedInlineEl.textContent = dollars.toLocaleString();
     });
 
-    // Fade + slide up on scroll
-    const revealEls = document.querySelectorAll('.reveal');
+    // Fade + slide up on scroll (also handles drop-reveal cards, excluding the process map which is sequenced separately)
+    const revealEls = document.querySelectorAll('.reveal, .drop-reveal:not(.process-step)');
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1185,6 +1602,45 @@
       });
     }, { threshold: 0.15 });
     revealEls.forEach(el => revealObserver.observe(el));
+
+    // Process map: each step and connector reveals independently as YOU scroll to it,
+    // instead of the whole sequence auto-playing once the section first comes into view.
+    const processStepEls = document.querySelectorAll('.process-step');
+    const processPathEls = document.querySelectorAll('.process-path');
+
+    const processStepObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          processStepObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.35 });
+    processStepEls.forEach(el => processStepObserver.observe(el));
+
+    const processPathObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          processPathObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.35 });
+    processPathEls.forEach(el => processPathObserver.observe(el));
+
+    // Pencil-writing animation for the mission heading
+    const missionWriting = document.getElementById('missionWriting');
+    if (missionWriting) {
+      const writeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            missionWriting.classList.add('write-visible');
+            writeObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      writeObserver.observe(missionWriting);
+    }
 
     // Click pop animation on buttons
     document.querySelectorAll('.button').forEach(btn => {
