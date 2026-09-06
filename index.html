@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SupplySpark</title>
+  <link rel="icon" type="image/png" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -24,7 +28,7 @@
       --coral: #fb7185;
       --ink: #111827;
       --paper: #f8fafc;
-      --orange:#ffaa00;
+      --orange: #ffaa00;
     }
 
     html {
@@ -37,7 +41,9 @@
       line-height: 1.6;
     }
 
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
       font-family: 'Fraunces', Georgia, serif;
       font-weight: 600;
     }
@@ -69,16 +75,41 @@
     }
 
     @keyframes dropBounce {
-      0%   { opacity: 0; transform: translateY(-80px); }
-      60%  { opacity: 1; transform: translateY(6px); }
-      80%  { transform: translateY(-3px); }
-      100% { opacity: 1; transform: translateY(0); }
+      0% {
+        opacity: 0;
+        transform: translateY(-80px);
+      }
+
+      60% {
+        opacity: 1;
+        transform: translateY(6px);
+      }
+
+      80% {
+        transform: translateY(-3px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .mission-cards .mission-card:nth-child(1).drop-reveal.visible { animation-delay: 0s; }
-    .mission-cards .mission-card:nth-child(2).drop-reveal.visible { animation-delay: 0.15s; }
-    .mission-cards .mission-card:nth-child(3).drop-reveal.visible { animation-delay: 0.3s; }
-    .mission-cards .mission-card:nth-child(4).drop-reveal.visible { animation-delay: 0.45s; }
+    .mission-cards .mission-card:nth-child(1).drop-reveal.visible {
+      animation-delay: 0s;
+    }
+
+    .mission-cards .mission-card:nth-child(2).drop-reveal.visible {
+      animation-delay: 0.15s;
+    }
+
+    .mission-cards .mission-card:nth-child(3).drop-reveal.visible {
+      animation-delay: 0.3s;
+    }
+
+    .mission-cards .mission-card:nth-child(4).drop-reveal.visible {
+      animation-delay: 0.45s;
+    }
 
     @media (prefers-reduced-motion: reduce) {
       .drop-reveal.visible {
@@ -142,12 +173,23 @@
     }
 
     @keyframes moveLeft {
-      from { transform: translateX(0); }
-      to   { transform: translateX(calc(-50% - 7px)); }
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(calc(-50% - 7px));
+      }
     }
+
     @keyframes moveRight {
-      from { transform: translateX(calc(-50% - 7px)); }
-      to   { transform: translateX(0); }
+      from {
+        transform: translateX(calc(-50% - 7px));
+      }
+
+      to {
+        transform: translateX(0);
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -159,7 +201,7 @@
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(17,24,39,0.72), rgba(17,24,39,0.55) 45%, rgba(17,24,39,0.88));
+      background: linear-gradient(180deg, rgba(17, 24, 39, 0.72), rgba(17, 24, 39, 0.55) 45%, rgba(17, 24, 39, 0.88));
       z-index: 1;
     }
 
@@ -222,13 +264,16 @@
     .scroll-indicator .scroll-arrow {
       display: block;
       animation: scroll-bounce 1.6s ease-in-out infinite;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
     }
 
     @keyframes scroll-bounce {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translateY(0);
       }
+
       50% {
         transform: translateY(8px);
       }
@@ -281,10 +326,10 @@
     }
 
     .hero-stat {
-      background: rgba(17,24,39,0.55);
+      background: rgba(17, 24, 39, 0.55);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.16);
+      border: 1px solid rgba(255, 255, 255, 0.16);
       border-radius: 18px;
       padding: 22px 34px;
       min-width: 150px;
@@ -308,7 +353,7 @@
     }
 
     nav {
-      background: rgba(255,255,255,0.75);
+      background: rgba(255, 255, 255, 0.75);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       padding: 18px 40px;
@@ -317,7 +362,7 @@
       align-items: center;
       position: sticky;
       top: 0;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
       z-index: 10;
       gap: 16px;
       flex-wrap: wrap;
@@ -417,8 +462,8 @@
       background: #fdf2f8;
     }
 
-    .panel-teal {
-      background: #f0fdfa;
+    .panel-grey {
+      background: #eef1f5;
     }
 
     .cards {
@@ -432,16 +477,7 @@
       background: white;
       padding: 28px;
       border-radius: 20px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-      border-top: 4px solid var(--yellow);
-    }
-
-    .cards .card:nth-child(4n+1) {
-      border-top-color: var(--yellow);
-    }
-
-    .cards .card:nth-child(4n+2) {
-      border-top-color: var(--pink);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
     .card-icon {
@@ -471,20 +507,11 @@
       background: white;
       padding: 40px 28px;
       border-radius: 20px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-      border-top: 4px solid var(--yellow);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-    }
-
-    .founder-cards .founder-card:nth-child(2) {
-      border-top-color: var(--pink);
-    }
-
-    .founder-cards .founder-card:nth-child(3) {
-      border-top-color: var(--teal);
     }
 
     .founder-pfp {
@@ -538,28 +565,11 @@
       max-width: 65ch;
     }
 
-    /* Impact section: full-bleed cork background (like Process), content constrained to 1100px */
+    /* Impact section */
     #impact {
       max-width: 100%;
       padding: 0;
       margin: 0;
-    }
-
-    .panel-cork {
-      border-radius: 0;
-      color: var(--ink);
-      background-color: #b3875a;
-      background-image:
-        radial-gradient(circle at 10% 20%, rgba(0,0,0,0.14) 0%, transparent 45%),
-        radial-gradient(circle at 85% 10%, rgba(0,0,0,0.12) 0%, transparent 40%),
-        radial-gradient(circle at 60% 80%, rgba(0,0,0,0.12) 0%, transparent 45%),
-        radial-gradient(circle at 20% 90%, rgba(255,255,255,0.08) 0%, transparent 35%),
-        radial-gradient(circle at 45% 45%, rgba(0,0,0,0.07) 0%, transparent 50%),
-        radial-gradient(rgba(0,0,0,0.18) 1px, transparent 1px),
-        radial-gradient(rgba(255,255,255,0.09) 1px, transparent 1px);
-      background-size: auto, auto, auto, auto, auto, 6px 6px, 9px 9px;
-      background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 3px 4px;
-      box-shadow: inset 0 16px 34px rgba(0,0,0,0.4), inset 0 -16px 34px rgba(0,0,0,0.4);
     }
 
     #impact .impact-inner {
@@ -571,218 +581,6 @@
     #impact h2 {
       color: var(--ink);
       font-size: 52px;
-    }
-
-    .bulletin-board {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      column-gap: 56px;
-      row-gap: 90px;
-      margin-top: 60px;
-    }
-
-    .bulletin-card:nth-child(3) {
-      grid-column: 1 / -1;
-      max-width: calc(50% - 28px);
-      margin: 0 auto;
-    }
-
-    .bulletin-card {
-      position: relative;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      background: #fdfaf3;
-      border-radius: 8px;
-      padding: 26px;
-      transform-origin: top center;
-      opacity: 0;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .bulletin-card.tilt-1 {
-      box-shadow:
-        0 0 0 3px rgba(255,255,255,0.55),
-        0 0 24px 6px rgba(226,229,233,0.6),
-        0 18px 30px rgba(0,0,0,0.4);
-    }
-    .bulletin-card.tilt-1:hover {
-      transform: rotate(-1deg) translateY(-22px);
-      box-shadow:
-        0 0 0 3px rgba(255,255,255,0.75),
-        0 0 32px 10px rgba(226,229,233,0.8),
-        0 22px 36px rgba(0,0,0,0.45);
-    }
-
-    .bulletin-card.tilt-2 {
-      box-shadow:
-        0 0 0 3px rgba(255,255,255,0.55),
-        0 0 24px 6px rgba(226,229,233,0.6),
-        0 18px 30px rgba(0,0,0,0.4);
-    }
-    .bulletin-card.tilt-2:hover {
-      transform: rotate(1deg) translateY(20px);
-      box-shadow:
-        0 0 0 3px rgba(255,255,255,0.75),
-        0 0 32px 10px rgba(226,229,233,0.8),
-        0 22px 36px rgba(0,0,0,0.45);
-    }
-
-    .bulletin-card.tilt-3 {
-      box-shadow:
-        0 0 0 3px rgba(255,255,255,0.55),
-        0 0 24px 6px rgba(226,229,233,0.6),
-        0 18px 30px rgba(0,0,0,0.4);
-    }
-    .bulletin-card.tilt-3:hover {
-      transform: rotate(0deg) translateY(-22px);
-      box-shadow:
-        0 0 0 3px rgba(255,255,255,0.75),
-        0 0 32px 10px rgba(226,229,233,0.8),
-        0 22px 36px rgba(0,0,0,0.45);
-    }
-
-    .bulletin-card.swing-visible.tilt-1 {
-      animation: swingIn1 2.2s ease-in-out forwards;
-    }
-    .bulletin-card.swing-visible.tilt-2 {
-      animation: swingIn2 2.2s ease-in-out forwards;
-      animation-delay: 0.25s;
-    }
-    .bulletin-card.swing-visible.tilt-3 {
-      animation: swingIn3 2.2s ease-in-out forwards;
-      animation-delay: 0.5s;
-    }
-
-    @keyframes swingIn1 {
-      0%   { opacity: 0; transform: rotate(-55deg) translateY(-70px); }
-      12%  { opacity: 1; transform: rotate(28deg) translateY(-14px); }
-      26%  { transform: rotate(-20deg) translateY(-14px); }
-      40%  { transform: rotate(14deg) translateY(-14px); }
-      54%  { transform: rotate(-10deg) translateY(-14px); }
-      66%  { transform: rotate(6deg) translateY(-14px); }
-      77%  { transform: rotate(-5deg) translateY(-14px); }
-      87%  { transform: rotate(-3deg) translateY(-14px); }
-      100% { opacity: 1; transform: rotate(-4deg) translateY(-14px); }
-    }
-
-    @keyframes swingIn2 {
-      0%   { opacity: 0; transform: rotate(-55deg) translateY(80px); }
-      12%  { opacity: 1; transform: rotate(30deg) translateY(24px); }
-      26%  { transform: rotate(-21deg) translateY(24px); }
-      40%  { transform: rotate(15deg) translateY(24px); }
-      54%  { transform: rotate(-10deg) translateY(24px); }
-      66%  { transform: rotate(7deg) translateY(24px); }
-      77%  { transform: rotate(-4deg) translateY(24px); }
-      87%  { transform: rotate(4deg) translateY(24px); }
-      100% { opacity: 1; transform: rotate(3deg) translateY(24px); }
-    }
-
-    @keyframes swingIn3 {
-      0%   { opacity: 0; transform: rotate(50deg) translateY(-70px); }
-      12%  { opacity: 1; transform: rotate(-26deg) translateY(-14px); }
-      26%  { transform: rotate(18deg) translateY(-14px); }
-      40%  { transform: rotate(-13deg) translateY(-14px); }
-      54%  { transform: rotate(9deg) translateY(-14px); }
-      66%  { transform: rotate(-6deg) translateY(-14px); }
-      77%  { transform: rotate(4deg) translateY(-14px); }
-      87%  { transform: rotate(-3deg) translateY(-14px); }
-      100% { opacity: 1; transform: rotate(-2deg) translateY(-14px); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .bulletin-card {
-        opacity: 1;
-      }
-      .bulletin-card.tilt-1 { transform: rotate(-4deg) translateY(-14px); animation: none; }
-      .bulletin-card.tilt-2 { transform: rotate(3deg) translateY(24px); animation: none; }
-      .bulletin-card.tilt-3 { transform: rotate(-2deg) translateY(-14px); animation: none; }
-    }
-
-    .bulletin-pin {
-      position: absolute;
-      top: -18px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 32% 28%, #ffb3b3 0%, #ff5c5c 35%, #c0201f 75%, #7f1414 100%);
-      box-shadow:
-        0 5px 8px rgba(0,0,0,0.5),
-        inset 0 -3px 5px rgba(0,0,0,0.4),
-        inset 0 2px 4px rgba(255,255,255,0.55);
-      border: 1px solid rgba(0,0,0,0.2);
-      z-index: 2;
-    }
-
-    .bulletin-pin::after {
-      content: '';
-      position: absolute;
-      top: 25px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 16px;
-      height: 6px;
-      background: rgba(0,0,0,0.28);
-      border-radius: 50%;
-      filter: blur(2.5px);
-    }
-
-    .bulletin-photo {
-      flex-shrink: 0;
-      width: 128px;
-      height: 128px;
-      border-radius: 6px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.18);
-    }
-
-    .bulletin-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .bulletin-text {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: left;
-    }
-
-    .bulletin-text h3 {
-      font-size: 21px;
-      margin-bottom: 8px;
-      color: var(--ink);
-    }
-
-    .bulletin-text p {
-      font-size: 14px;
-      color: #64748b;
-      margin: 0;
-      max-width: none;
-    }
-
-    @media (max-width: 800px) {
-      .bulletin-board {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .bulletin-card:nth-child(3) {
-        grid-column: auto;
-        max-width: 100%;
-      }
-
-      .bulletin-card.tilt-1,
-      .bulletin-card.tilt-2,
-      .bulletin-card.tilt-3 {
-        transform: none !important;
-        animation: none !important;
-        opacity: 1;
-      }
     }
 
     ul {
@@ -828,7 +626,7 @@
 
     .button:hover {
       transform: translateY(-4px);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
     }
 
     .button.pop {
@@ -836,9 +634,17 @@
     }
 
     @keyframes button-pop {
-      0% { transform: scale(1); }
-      45% { transform: scale(1.05); }
-      100% { transform: scale(1); }
+      0% {
+        transform: scale(1);
+      }
+
+      45% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+      }
     }
 
     .button.secondary {
@@ -855,7 +661,7 @@
     .button.hero-secondary {
       background: transparent;
       color: white;
-      border: 2px solid rgba(255,255,255,0.7);
+      border: 2px solid rgba(255, 255, 255, 0.7);
     }
 
     .button.pink {
@@ -881,7 +687,9 @@
     }
 
     @keyframes writeReveal {
-      to { clip-path: inset(0 0 0 0); }
+      to {
+        clip-path: inset(0 0 0 0);
+      }
     }
 
     .pencil-icon {
@@ -902,7 +710,7 @@
       height: 100%;
       overflow: visible;
       stroke: var(--yellow);
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
     }
 
     .mission-writing.write-visible .pencil-icon {
@@ -910,14 +718,29 @@
     }
 
     @keyframes pencilMove {
-      0% { left: 0%; opacity: 1; }
-      92% { opacity: 1; }
-      100% { left: 100%; opacity: 0; }
+      0% {
+        left: 0%;
+        opacity: 1;
+      }
+
+      92% {
+        opacity: 1;
+      }
+
+      100% {
+        left: 100%;
+        opacity: 0;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .mission-heading { clip-path: inset(0 0 0 0) !important; }
-      .pencil-icon { display: none !important; }
+      .mission-heading {
+        clip-path: inset(0 0 0 0) !important;
+      }
+
+      .pencil-icon {
+        display: none !important;
+      }
     }
 
     .mission-heading .accent {
@@ -978,54 +801,62 @@
     /* Per-card accent color, only fully applied on hover */
     .mission-cards .mission-card:nth-child(4n+1):hover {
       border-color: var(--yellow);
-      box-shadow: 0 16px 36px rgba(250,204,21,0.30);
+      box-shadow: 0 16px 36px rgba(250, 204, 21, 0.30);
     }
+
     .mission-cards .mission-card:nth-child(4n+1):hover .card-icon {
       background: var(--yellow);
-      box-shadow: 0 8px 20px rgba(250,204,21,0.5);
+      box-shadow: 0 8px 20px rgba(250, 204, 21, 0.5);
     }
+
     .mission-cards .mission-card:nth-child(4n+1):hover .card-icon svg {
       stroke: var(--ink);
-      filter: drop-shadow(0 0 4px rgba(17,24,39,0.5));
+      filter: drop-shadow(0 0 4px rgba(17, 24, 39, 0.5));
     }
 
     .mission-cards .mission-card:nth-child(4n+2):hover {
       border-color: var(--pink);
-      box-shadow: 0 16px 36px rgba(244,114,182,0.30);
+      box-shadow: 0 16px 36px rgba(244, 114, 182, 0.30);
     }
+
     .mission-cards .mission-card:nth-child(4n+2):hover .card-icon {
       background: var(--pink);
-      box-shadow: 0 8px 20px rgba(244,114,182,0.5);
+      box-shadow: 0 8px 20px rgba(244, 114, 182, 0.5);
     }
+
     .mission-cards .mission-card:nth-child(4n+2):hover .card-icon svg {
       stroke: #fff;
-      filter: drop-shadow(0 0 4px rgba(255,255,255,0.9));
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.9));
     }
 
     .mission-cards .mission-card:nth-child(4n+3):hover {
       border-color: var(--teal);
-      box-shadow: 0 16px 36px rgba(45,212,191,0.30);
+      box-shadow: 0 16px 36px rgba(45, 212, 191, 0.30);
     }
+
     .mission-cards .mission-card:nth-child(4n+3):hover .card-icon {
       background: var(--teal);
-      box-shadow: 0 8px 20px rgba(45,212,191,0.5);
+      box-shadow: 0 8px 20px rgba(45, 212, 191, 0.5);
     }
+
     .mission-cards .mission-card:nth-child(4n+3):hover .card-icon svg {
       stroke: #fff;
-      filter: drop-shadow(0 0 4px rgba(255,255,255,0.9));
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.9));
     }
 
     .mission-cards .mission-card:nth-child(4n+4):hover {
       border-color: var(--purple);
-      box-shadow: 0 16px 36px rgba(167,139,250,0.30);
+      box-shadow: 0 16px 36px rgba(167, 139, 250, 0.30);
     }
+
     .mission-cards .mission-card:nth-child(4n+4):hover .card-icon {
       background: var(--purple);
-      box-shadow: 0 8px 20px rgba(167,139,250,0.5);
+      box-shadow: 0 8px 20px rgba(167, 139, 250, 0.5);
     }
+
     .mission-cards .mission-card:nth-child(4n+4):hover .card-icon svg {
       stroke: #fff;
-      filter: drop-shadow(0 0 4px rgba(255,255,255,0.9));
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.9));
     }
 
     .mission-card h3 {
@@ -1062,8 +893,25 @@
       padding: 70px 20px;
     }
 
-    #process .process-inner > h2 {
+    #process .process-inner>h2 {
       font-size: 52px;
+    }
+
+    /* Getting Involved section: full-bleed grey background, like Process */
+    #involved {
+      max-width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    #involved .panel-grey {
+      border-radius: 0;
+    }
+
+    #involved .involved-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 70px 20px;
     }
 
     /* Process map: zigzag boxes connected by dotted lines */
@@ -1155,43 +1003,128 @@
       transform: scale(1.15);
     }
 
-    .step-1 { left: 0%; top: 0%; }
-    .step-2 { left: 54%; top: 26%; }
-    .step-3 { left: 0%; top: 52%; }
-    .step-4 { left: 54%; top: 78%; }
+    .step-1 {
+      left: 0%;
+      top: 0%;
+    }
 
-    .step-1 .process-num, .step-1 .card-icon { background: var(--yellow); }
-    .step-2 .process-num, .step-2 .card-icon { background: var(--pink); }
-    .step-3 .process-num, .step-3 .card-icon { background: var(--teal); }
-    .step-4 .process-num, .step-4 .card-icon { background: var(--purple); }
+    .step-2 {
+      left: 54%;
+      top: 26%;
+    }
 
-    .step-1 .card-icon svg { stroke: var(--ink); }
+    .step-3 {
+      left: 0%;
+      top: 52%;
+    }
+
+    .step-4 {
+      left: 54%;
+      top: 78%;
+    }
+
+    .step-1 .process-num,
+    .step-1 .card-icon {
+      background: var(--yellow);
+    }
+
+    .step-2 .process-num,
+    .step-2 .card-icon {
+      background: var(--pink);
+    }
+
+    .step-3 .process-num,
+    .step-3 .card-icon {
+      background: var(--teal);
+    }
+
+    .step-4 .process-num,
+    .step-4 .card-icon {
+      background: var(--purple);
+    }
+
+    .step-1 .card-icon svg {
+      stroke: var(--ink);
+    }
+
     .step-2 .card-icon svg,
     .step-3 .card-icon svg,
-    .step-4 .card-icon svg { stroke: white; }
+    .step-4 .card-icon svg {
+      stroke: white;
+    }
 
-    .step-1:hover { border-color: var(--yellow); box-shadow: 0 16px 36px rgba(250,204,21,0.30); }
-    .step-1:hover .card-icon { box-shadow: 0 8px 20px rgba(250,204,21,0.5); }
-    .step-1:hover .card-icon svg { filter: drop-shadow(0 0 4px rgba(17,24,39,0.5)); }
+    .step-1:hover {
+      border-color: var(--yellow);
+      box-shadow: 0 16px 36px rgba(250, 204, 21, 0.30);
+    }
 
-    .step-2:hover { border-color: var(--pink); box-shadow: 0 16px 36px rgba(244,114,182,0.30); }
-    .step-2:hover .card-icon { box-shadow: 0 8px 20px rgba(244,114,182,0.5); }
-    .step-2:hover .card-icon svg { filter: drop-shadow(0 0 4px rgba(255,255,255,0.9)); }
+    .step-1:hover .card-icon {
+      box-shadow: 0 8px 20px rgba(250, 204, 21, 0.5);
+    }
 
-    .step-3:hover { border-color: var(--teal); box-shadow: 0 16px 36px rgba(45,212,191,0.30); }
-    .step-3:hover .card-icon { box-shadow: 0 8px 20px rgba(45,212,191,0.5); }
-    .step-3:hover .card-icon svg { filter: drop-shadow(0 0 4px rgba(255,255,255,0.9)); }
+    .step-1:hover .card-icon svg {
+      filter: drop-shadow(0 0 4px rgba(17, 24, 39, 0.5));
+    }
 
-    .step-4:hover { border-color: var(--purple); box-shadow: 0 16px 36px rgba(167,139,250,0.30); }
-    .step-4:hover .card-icon { box-shadow: 0 8px 20px rgba(167,139,250,0.5); }
-    .step-4:hover .card-icon svg { filter: drop-shadow(0 0 4px rgba(255,255,255,0.9)); }
+    .step-2:hover {
+      border-color: var(--pink);
+      box-shadow: 0 16px 36px rgba(244, 114, 182, 0.30);
+    }
+
+    .step-2:hover .card-icon {
+      box-shadow: 0 8px 20px rgba(244, 114, 182, 0.5);
+    }
+
+    .step-2:hover .card-icon svg {
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.9));
+    }
+
+    .step-3:hover {
+      border-color: var(--teal);
+      box-shadow: 0 16px 36px rgba(45, 212, 191, 0.30);
+    }
+
+    .step-3:hover .card-icon {
+      box-shadow: 0 8px 20px rgba(45, 212, 191, 0.5);
+    }
+
+    .step-3:hover .card-icon svg {
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.9));
+    }
+
+    .step-4:hover {
+      border-color: var(--purple);
+      box-shadow: 0 16px 36px rgba(167, 139, 250, 0.30);
+    }
+
+    .step-4:hover .card-icon {
+      box-shadow: 0 8px 20px rgba(167, 139, 250, 0.5);
+    }
+
+    .step-4:hover .card-icon svg {
+      filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.9));
+    }
 
     @media (max-width: 800px) {
-      .process-track { height: auto; }
-      .process-steps { position: static; }
-      .process-step { position: static !important; width: 100% !important; margin-bottom: 20px; }
-      .process-paths { display: none; }
+      .process-track {
+        height: auto;
+      }
+
+      .process-steps {
+        position: static;
+      }
+
+      .process-step {
+        position: static !important;
+        width: 100% !important;
+        margin-bottom: 20px;
+      }
+
+      .process-paths {
+        display: none;
+      }
     }
+
     .contact-wrap {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1203,7 +1136,7 @@
       background: white;
       border-radius: 20px;
       padding: 32px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
     .contact-form label {
@@ -1314,6 +1247,250 @@
       line-height: 1;
     }
 
+    /* ===== Blocky neon hover system ===== */
+    nav a.nav-link {
+      transition: color 0.25s ease, text-shadow 0.25s ease;
+    }
+
+    nav a.nav-link:hover {
+      color: var(--pink);
+      text-shadow: 0 0 10px rgba(244, 114, 182, 0.55);
+    }
+
+    .social-icons a {
+      transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      box-shadow: 0 0 16px rgba(250, 204, 21, 0.7);
+      transform: translateY(-2px);
+    }
+
+    .button:hover {
+      box-shadow: 0 0 18px rgba(45, 212, 191, 0.5), 0 0 40px rgba(45, 212, 191, 0.28), 0 10px 22px rgba(0, 0, 0, 0.18);
+    }
+
+    .button.hero-primary:hover {
+      box-shadow: 0 0 20px rgba(250, 204, 21, 0.75), 0 0 46px rgba(250, 204, 21, 0.4);
+    }
+
+    .button.hero-secondary:hover {
+      box-shadow: 0 0 18px rgba(255, 255, 255, 0.55);
+    }
+
+    .button.pink:hover {
+      box-shadow: 0 0 20px rgba(244, 114, 182, 0.65), 0 0 46px rgba(244, 114, 182, 0.35);
+    }
+
+    .mission-card,
+    .process-step {
+      transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease, border-width 0.3s ease;
+    }
+
+    .mission-cards .mission-card:nth-child(4n+1):hover {
+      border-width: 3px;
+      box-shadow: 0 0 16px rgba(250, 204, 21, 0.65), 0 0 40px rgba(250, 204, 21, 0.35), 0 16px 36px rgba(250, 204, 21, 0.30);
+    }
+
+    .mission-cards .mission-card:nth-child(4n+2):hover {
+      border-width: 3px;
+      box-shadow: 0 0 16px rgba(244, 114, 182, 0.65), 0 0 40px rgba(244, 114, 182, 0.35), 0 16px 36px rgba(244, 114, 182, 0.30);
+    }
+
+    .mission-cards .mission-card:nth-child(4n+3):hover {
+      border-width: 3px;
+      box-shadow: 0 0 16px rgba(45, 212, 191, 0.65), 0 0 40px rgba(45, 212, 191, 0.35), 0 16px 36px rgba(45, 212, 191, 0.30);
+    }
+
+    .mission-cards .mission-card:nth-child(4n+4):hover {
+      border-width: 3px;
+      box-shadow: 0 0 16px rgba(167, 139, 250, 0.65), 0 0 40px rgba(167, 139, 250, 0.35), 0 16px 36px rgba(167, 139, 250, 0.30);
+    }
+
+    .step-1:hover {
+      border-width: 3px;
+      box-shadow: 0 0 16px rgba(250, 204, 21, 0.65), 0 0 40px rgba(250, 204, 21, 0.35), 0 16px 36px rgba(250, 204, 21, 0.30);
+    }
+
+    .step-2:hover {
+      border-width: 3px;
+      box-shadow: 0 0 16px rgba(244, 114, 182, 0.65), 0 0 40px rgba(244, 114, 182, 0.35), 0 16px 36px rgba(244, 114, 182, 0.30);
+    }
+
+    .step-3:hover {
+      border-width: 3px;
+      box-shadow: 0 0 16px rgba(45, 212, 191, 0.65), 0 0 40px rgba(45, 212, 191, 0.35), 0 16px 36px rgba(45, 212, 191, 0.30);
+    }
+
+    .step-4:hover {
+      border-width: 3px;
+      box-shadow: 0 0 16px rgba(167, 139, 250, 0.65), 0 0 40px rgba(167, 139, 250, 0.35), 0 16px 36px rgba(167, 139, 250, 0.30);
+    }
+
+    /* Getting Involved + FAQ cards */
+    .card {
+      border: 3px solid transparent;
+      border-radius: 14px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, border-width 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-width: 4px;
+      border-color: var(--yellow);
+      box-shadow: 0 0 16px rgba(250, 204, 21, 0.6), 0 0 40px rgba(250, 204, 21, 0.3), 0 16px 36px rgba(0, 0, 0, 0.12);
+    }
+
+    .cards .card:nth-child(4n+1):hover {
+      border-color: var(--yellow);
+      box-shadow: 0 0 16px rgba(250, 204, 21, 0.6), 0 0 40px rgba(250, 204, 21, 0.3), 0 16px 36px rgba(0, 0, 0, 0.12);
+    }
+
+    .cards .card:nth-child(4n+2):hover {
+      border-color: var(--pink);
+      box-shadow: 0 0 16px rgba(244, 114, 182, 0.6), 0 0 40px rgba(244, 114, 182, 0.3), 0 16px 36px rgba(0, 0, 0, 0.12);
+    }
+
+    .cards .card:nth-child(4n+3):hover {
+      border-color: var(--teal);
+      box-shadow: 0 0 16px rgba(45, 212, 191, 0.6), 0 0 40px rgba(45, 212, 191, 0.3), 0 16px 36px rgba(0, 0, 0, 0.12);
+    }
+
+    .cards .card:nth-child(4n+4):hover {
+      border-color: var(--purple);
+      box-shadow: 0 0 16px rgba(167, 139, 250, 0.6), 0 0 40px rgba(167, 139, 250, 0.3), 0 16px 36px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Founder cards */
+    .founder-card {
+      border: 3px solid transparent;
+      border-radius: 14px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, border-width 0.3s ease;
+    }
+
+    .founder-cards .founder-card:nth-child(1):hover {
+      transform: translateY(-8px);
+      border-width: 4px;
+      border-color: var(--yellow);
+      box-shadow: 0 0 16px rgba(250, 204, 21, 0.6), 0 0 40px rgba(250, 204, 21, 0.3), 0 16px 36px rgba(0, 0, 0, 0.12);
+    }
+
+    .founder-cards .founder-card:nth-child(2):hover {
+      transform: translateY(-8px);
+      border-width: 4px;
+      border-color: var(--pink);
+      box-shadow: 0 0 16px rgba(244, 114, 182, 0.6), 0 0 40px rgba(244, 114, 182, 0.3), 0 16px 36px rgba(0, 0, 0, 0.12);
+    }
+
+    .founder-cards .founder-card:nth-child(3):hover {
+      transform: translateY(-8px);
+      border-width: 4px;
+      border-color: var(--teal);
+      box-shadow: 0 0 16px rgba(45, 212, 191, 0.6), 0 0 40px rgba(45, 212, 191, 0.3), 0 16px 36px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Impact bars replacing the old bulletin board */
+    .impact-bars {
+      display: flex;
+      gap: 28px;
+      margin-top: 60px;
+      align-items: stretch;
+    }
+
+    .impact-bar {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: #fdfaf3;
+      border: 3px solid transparent;
+      border-radius: 14px;
+      overflow: hidden;
+      min-height: 480px;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, border-width 0.3s ease;
+    }
+
+    .impact-bar-photo {
+      height: 240px;
+      flex-shrink: 0;
+    }
+
+    .impact-bar-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .impact-bar-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 22px;
+      text-align: center;
+    }
+
+    .impact-bar-text h3 {
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .impact-bar-text p {
+      font-size: 15px;
+      color: #475569;
+      margin: 0;
+    }
+
+    .impact-bars .impact-bar:nth-child(3n+1):hover {
+      transform: translateY(-10px);
+      border-width: 4px;
+      border-color: var(--yellow);
+      box-shadow: 0 0 18px rgba(250, 204, 21, 0.6), 0 0 44px rgba(250, 204, 21, 0.35), 0 16px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .impact-bars .impact-bar:nth-child(3n+2):hover {
+      transform: translateY(-10px);
+      border-width: 4px;
+      border-color: var(--pink);
+      box-shadow: 0 0 18px rgba(244, 114, 182, 0.6), 0 0 44px rgba(244, 114, 182, 0.35), 0 16px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .impact-bars .impact-bar:nth-child(3n+3):hover {
+      transform: translateY(-10px);
+      border-width: 4px;
+      border-color: var(--teal);
+      box-shadow: 0 0 18px rgba(45, 212, 191, 0.6), 0 0 44px rgba(45, 212, 191, 0.35), 0 16px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 800px) {
+      .impact-bars {
+        flex-direction: column;
+      }
+
+      .impact-bar {
+        min-height: auto;
+      }
+    }
+
+    /* Accent-word headings, matching the Our Mission / How It's Done style */
+    .impact-heading .accent {
+      color: var(--coral);
+    }
+
+    .involved-heading .accent {
+      color: var(--pink);
+    }
+
+    .involved-heading {
+      font-size: 56px;
+    }
+
+    .founders-heading .accent {
+      color: var(--teal);
+    }
+
     /* Center all website text */
     section,
     section .reveal,
@@ -1357,7 +1534,9 @@
 
 <body id="top">
   <nav>
-    <a class="logo-title" href="#top"><img src="logo.png" alt="SupplySpark Logo"><h2>SupplySpark</h2></a>
+    <a class="logo-title" href="#top"><img src="logo.png" alt="SupplySpark Logo">
+      <h2>SupplySpark</h2>
+    </a>
     <div class="nav-right">
       <div class="nav-links">
         <a class="nav-link" href="#mission">About Us</a>
@@ -1368,7 +1547,11 @@
       </div>
       <div class="social-icons">
         <a href="https://instagram.com/supply.spark" aria-label="Instagram" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="20" height="20" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+          </svg>
         </a>
       </div>
     </div>
@@ -1492,32 +1675,45 @@
       <div class="mission-writing" id="missionWriting">
         <h2 class="mission-heading">Our <span class="accent">Mission</span></h2>
         <span class="pencil-icon">
-          <svg viewBox="-4 -4 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
-            <path d="M15 5l4 4"/>
+          <svg viewBox="-4 -4 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" />
+            <path d="M15 5l4 4" />
           </svg>
         </span>
       </div>
       <p class="mission-sub">
-        Our mission is to support foster children by providing essential school supplies that help them succeed academically and feel
-        confident in the classroom. We aim to create equal opportunities for foster students by ensuring every child has access to the
+        Our mission is to support foster children by providing essential school supplies that help them succeed
+        academically and feel
+        confident in the classroom. We aim to create equal opportunities for foster students by ensuring every child has
+        access to the
         tools they need to learn, grow, and reach their full potential.
       </p>
 
       <div class="mission-cards">
         <div class="mission-card drop-reveal">
           <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8l9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M21 8 12 3 3 8l9 5 9-5Z" />
+              <path d="M3 8v8l9 5 9-5V8" />
+              <path d="M12 13v8" />
+            </svg>
           </div>
           <div>
             <h3>Supplies With Purpose</h3>
-            <p>Every backpack we pack is filled with the notebooks, pencils, and tools a student actually needs to start the year ready.</p>
+            <p>Every backpack we pack is filled with the notebooks, pencils, and tools a student actually needs to start
+              the year ready.</p>
           </div>
         </div>
 
         <div class="mission-card drop-reveal">
           <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 3 5 6.5 5c2 0 3.5 1.5 4 2.5.5-1 2-2.5 4-2.5C18 5 20.5 8.5 18.5 12.5 16 16.65 12 21 12 21z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path
+                d="M12 21s-7-4.35-9.5-8.5C.5 8.5 3 5 6.5 5c2 0 3.5 1.5 4 2.5.5-1 2-2.5 4-2.5C18 5 20.5 8.5 18.5 12.5 16 16.65 12 21 12 21z" />
+            </svg>
           </div>
           <div>
             <h3>Building Confidence</h3>
@@ -1527,7 +1723,13 @@
 
         <div class="mission-card drop-reveal">
           <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20c0-3 2.7-5 6-5s6 2 6 5"/><path d="M14.5 15c2.5.3 4.5 2 4.5 5"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="8" cy="8" r="3" />
+              <circle cx="17" cy="9" r="2.5" />
+              <path d="M2 20c0-3 2.7-5 6-5s6 2 6 5" />
+              <path d="M14.5 15c2.5.3 4.5 2 4.5 5" />
+            </svg>
           </div>
           <div>
             <h3>Student-Led Initiative</h3>
@@ -1537,113 +1739,139 @@
 
         <div class="mission-card drop-reveal">
           <div class="card-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-6h6v6"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M3 21V9l9-6 9 6v12" />
+              <path d="M9 21v-6h6v6" />
+            </svg>
           </div>
           <div>
             <h3>Community Partnerships</h3>
-            <p>We work directly with foster homes and agencies to get supplies into the hands of the students who need them most.</p>
+            <p>We work directly with foster homes and agencies to get supplies into the hands of the students who need
+              them most.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-   <section id="process">
+  <section id="process">
     <div class="panel panel-blue reveal">
       <div class="process-inner">
-      <h2 class="process-heading">How It's <span class="accent">Done</span></h2>
+        <h2 class="process-heading">How It's <span class="accent">Done</span></h2>
 
-      <div class="process-track" id="processTrack">
-        <svg class="process-paths" viewBox="0 0 100 100" preserveAspectRatio="none">
-          <path id="processPath1" class="process-path" d="M46,11 Q65,11 77,26"/>
-          <path id="processPath2" class="process-path" d="M54,37 Q35,37 23,52"/>
-          <path id="processPath3" class="process-path" d="M46,63 Q65,63 77,78"/>
-        </svg>
+        <div class="process-track" id="processTrack">
+          <svg class="process-paths" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path id="processPath1" class="process-path" d="M46,11 Q65,11 77,26" />
+            <path id="processPath2" class="process-path" d="M54,37 Q35,37 23,52" />
+            <path id="processPath3" class="process-path" d="M46,63 Q65,63 77,78" />
+          </svg>
 
-        <div class="process-steps">
-          <div class="process-step step-1 drop-reveal" id="processStep1">
-            <div class="process-step-top">
-              <div class="process-num">1</div>
-              <div class="card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v9H4v-9"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7C9 7 8 5.5 8 4a2 2 0 0 1 4 0c0-1.5-1-2.5-2-2.5"/><path d="M12 7c3 0 4-1.5 4-3a2 2 0 0 0-4 0"/></svg>
+          <div class="process-steps">
+            <div class="process-step step-1 drop-reveal" id="processStep1">
+              <div class="process-step-top">
+                <div class="process-num">1</div>
+                <div class="card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M20 12v9H4v-9" />
+                    <path d="M2 7h20v5H2z" />
+                    <path d="M12 22V7" />
+                    <path d="M12 7C9 7 8 5.5 8 4a2 2 0 0 1 4 0c0-1.5-1-2.5-2-2.5" />
+                    <path d="M12 7c3 0 4-1.5 4-3a2 2 0 0 0-4 0" />
+                  </svg>
+                </div>
               </div>
+              <h3>Community Donations</h3>
+              <p>We collect school supplies and financial donations from individuals, businesses, and local
+                organizations.</p>
             </div>
-            <h3>Community Donations</h3>
-            <p>We collect school supplies and financial donations from individuals, businesses, and local organizations.</p>
-          </div>
 
-          <div class="process-step step-2 drop-reveal" id="processStep2">
-            <div class="process-step-top">
-              <div class="process-num">2</div>
-              <div class="card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            <div class="process-step step-2 drop-reveal" id="processStep2">
+              <div class="process-step-top">
+                <div class="process-num">2</div>
+                <div class="card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="7" rx="1" />
+                    <rect x="14" y="3" width="7" height="7" rx="1" />
+                    <rect x="3" y="14" width="7" height="7" rx="1" />
+                    <rect x="14" y="14" width="7" height="7" rx="1" />
+                  </svg>
+                </div>
               </div>
+              <h3>Organizing Supplies</h3>
+              <p>Volunteers sort, package, and prepare supplies for distribution.</p>
             </div>
-            <h3>Organizing Supplies</h3>
-            <p>Volunteers sort, package, and prepare supplies for distribution.</p>
-          </div>
 
-          <div class="process-step step-3 drop-reveal" id="processStep3">
-            <div class="process-step-top">
-              <div class="process-num">3</div>
-              <div class="card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5 3 9l2-2 3 3 2-2-3-3 2-2 6.5 6.5"/><path d="M15.5 9.5 21 15l-2 2-3-3-2 2 3 3-2 2-6.5-6.5"/></svg>
+            <div class="process-step step-3 drop-reveal" id="processStep3">
+              <div class="process-step-top">
+                <div class="process-num">3</div>
+                <div class="card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M8.5 14.5 3 9l2-2 3 3 2-2-3-3 2-2 6.5 6.5" />
+                    <path d="M15.5 9.5 21 15l-2 2-3-3-2 2 3 3-2 2-6.5-6.5" />
+                  </svg>
+                </div>
               </div>
+              <h3>Partnering With Organizations</h3>
+              <p>We work with foster agencies, schools, shelters, and community groups to identify students in need.</p>
             </div>
-            <h3>Partnering With Organizations</h3>
-            <p>We work with foster agencies, schools, shelters, and community groups to identify students in need.</p>
-          </div>
 
-          <div class="process-step step-4 drop-reveal" id="processStep4">
-            <div class="process-step-top">
-              <div class="process-num">4</div>
-              <div class="card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="7" width="14" height="10" rx="1"/><path d="M15 10h4l3 3v4h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="17" cy="19" r="2"/></svg>
+            <div class="process-step step-4 drop-reveal" id="processStep4">
+              <div class="process-step-top">
+                <div class="process-num">4</div>
+                <div class="card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="1" y="7" width="14" height="10" rx="1" />
+                    <path d="M15 10h4l3 3v4h-7z" />
+                    <circle cx="6" cy="19" r="2" />
+                    <circle cx="17" cy="19" r="2" />
+                  </svg>
+                </div>
               </div>
+              <h3>Delivering Supplies</h3>
+              <p>Supplies are distributed directly to foster children before and during the school year.</p>
             </div>
-            <h3>Delivering Supplies</h3>
-            <p>Supplies are distributed directly to foster children before and during the school year.</p>
           </div>
         </div>
-      </div>
       </div>
     </div>
   </section>
 
   <section id="impact">
-    <div class="panel-cork reveal">
+    <div class="reveal">
       <div class="impact-inner">
-        <h2>Our Impact</h2>
+        <h2 class="impact-heading">Our <span class="accent">Impact</span></h2>
 
-        <div class="bulletin-board">
-          <div class="bulletin-card tilt-1">
-            <span class="bulletin-pin"></span>
-            <div class="bulletin-photo">
+        <div class="impact-bars">
+          <div class="impact-bar drop-reveal">
+            <div class="impact-bar-photo">
               <img src="impact-photo.png" alt="First Donation">
             </div>
-            <div class="bulletin-text">
+            <div class="impact-bar-text">
               <h3>Bithiah's Family Services</h3>
               <p>Delivered 24 Supply Kits</p>
             </div>
           </div>
 
-          <div class="bulletin-card tilt-2">
-            <span class="bulletin-pin"></span>
-            <div class="bulletin-photo">
-              <img src="backpack-delivery.jpg" alt="Second Donation">
+          <div class="impact-bar drop-reveal">
+            <div class="impact-bar-photo">
+              <img src="delivery-photo.png" alt="Second Donation">
             </div>
-            <div class="bulletin-text">
+            <div class="impact-bar-text">
               <h3>SerenityKids</h3>
               <p>Delivered 7 Supply Kits</p>
             </div>
           </div>
 
-          <div class="bulletin-card tilt-3">
-            <span class="bulletin-pin"></span>
-            <div class="bulletin-photo">
+          <div class="impact-bar drop-reveal">
+            <div class="impact-bar-photo">
               <img src="impact-photo3.jpeg" alt="Third Donation">
             </div>
-            <div class="bulletin-text">
+            <div class="impact-bar-text">
               <h3>Life Steps Foundation</h3>
               <p>Delivered 65 Supply Kits</p>
             </div>
@@ -1653,28 +1881,31 @@
     </div>
   </section>
 
-  <section>
-    <div class="panel panel-teal reveal">
-      <h2>Getting Involved</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Donate Supplies</h3>
-          <p>Contribute notebooks, backpacks, pencils, calculators, and other school supplies.</p>
-        </div>
-
-        <div class="card">
-          <h3>Make a Financial Donation</h3>
-          <p>Monetary donations help us purchase additional supplies and expand our reach.</p>
-          <div class="donation-note">
-            Every dollar goes directly toward backpacks, notebooks, and classroom essentials for the
-            kids we partner with — no overhead, no middleman. The $<span id="raisedInline">200</span> we've raised so far has already
-            gone straight into supplies for the 96 students we've served.
+  <section id="involved">
+    <div class="panel panel-grey reveal">
+      <div class="involved-inner">
+        <h2 class="involved-heading">Getting <span class="accent">Involved</span></h2>
+        <div class="cards">
+          <div class="card">
+            <h3>Donate Supplies</h3>
+            <p>Contribute notebooks, backpacks, pencils, calculators, and other school supplies.</p>
           </div>
-        </div>
 
-        <div class="card">
-          <h3>Volunteer</h3>
-          <p>Help organize donation drives, sort supplies, and assist with community events.</p>
+          <div class="card">
+            <h3>Make a Financial Donation</h3>
+            <p>Monetary donations help us purchase additional supplies and expand our reach.</p>
+            <div class="donation-note">
+              Every dollar goes directly toward backpacks, notebooks, and classroom essentials for the
+              kids we partner with — no overhead, no middleman. The $<span id="raisedInline">200</span> we've raised so
+              far has already
+              gone straight into supplies for the 96 students we've served.
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Volunteer</h3>
+            <p>Help organize donation drives, sort supplies, and assist with community events.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1723,29 +1954,32 @@
   </section>
   -->
 
-<section>
-  <h1 class="reveal" style="font-size:56px; margin-bottom:32px;">About the Founders</h1>
+  <section>
+    <h1 class="reveal founders-heading" style="font-size:56px; margin-bottom:32px;">About the <span
+        class="accent">Founders</span></h1>
 
-  <div class="founder-cards reveal">
-    <div class="founder-card">
-      <img class="founder-pfp" src="founder-byron.png" alt="Byron Chen">
-      <h3>Byron Chen</h3>
-      <p>Co-founder and Head Of Operations for SupplySpark to help foster children gain access to the school supplies they need to succeed.</p>
-    </div>
+    <div class="founder-cards reveal">
+      <div class="founder-card">
+        <img class="founder-pfp" src="founder-byron.png" alt="Byron Chen">
+        <h3>Byron Chen</h3>
+        <p>Co-founder and Head Of Operations for SupplySpark to help foster children gain access to the school supplies
+          they need to succeed.</p>
+      </div>
 
-    <div class="founder-card">
-      <img class="founder-pfp" src="founder-owen.png" alt="Owen Huang">
-      <h3>Owen Huang</h3>
-      <p>Co-founder and Head Of Operations for SupplySpark to build a strong community effort that gives foster children the tools and encouragement they deserve.</p>
-    </div>
+      <div class="founder-card">
+        <img class="founder-pfp" src="founder-owen.png" alt="Owen Huang">
+        <h3>Owen Huang</h3>
+        <p>Co-founder and Head Of Operations for SupplySpark to build a strong community effort that gives foster
+          children the tools and encouragement they deserve.</p>
+      </div>
 
-    <div class="founder-card">
-      <img class="founder-pfp" src="founder-braydon.png" alt="Braydon Gunawan">
-      <h3>Braydon Gunawan</h3>
-      <p>Co-Founder and Leader of SupplySpark's technology team, building and maintaining our digital outreach.</p>
+      <div class="founder-card">
+        <img class="founder-pfp" src="founder-braydon.png" alt="Braydon Gunawan">
+        <h3>Braydon Gunawan</h3>
+        <p>Co-Founder and Leader of SupplySpark's technology team, building and maintaining our digital outreach.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <section>
     <h2 class="reveal">FAQ</h2>
@@ -1779,7 +2013,8 @@
         <input type="email" id="email" name="email" placeholder="you@example.com" required>
 
         <label for="message">Message</label>
-        <textarea id="message" name="message" placeholder="How can we help, or how would you like to get involved?" required></textarea>
+        <textarea id="message" name="message" placeholder="How can we help, or how would you like to get involved?"
+          required></textarea>
 
         <button type="submit" class="button" style="width:100%; margin-top:20px;">Send Message</button>
       </form>
@@ -1793,16 +2028,19 @@
     </div>
   </section>
 
-<section id="donate">
-  <div class="cta reveal">
-    <h2>Donate</h2>
-    <p>Every donation helps us provide backpacks, notebooks, pencils, calculators, and other school supplies for foster children who need them.</p>
-    <p style="margin-top:18px;">SupplySpark is fiscally sponsored by Hack Club, making your donation tax-deductible where permitted by law.</p>
-    <a class="button" href="https://hcb.hackclub.com/donations/start/supplyspark" target="_blank" rel="noopener">Donate Through Hack Club</a>
-  </div>
-</section>
+  <section id="donate">
+    <div class="cta reveal">
+      <h2>Donate</h2>
+      <p>Every donation helps us provide backpacks, notebooks, pencils, calculators, and other school supplies for
+        foster children who need them.</p>
+      <p style="margin-top:18px;">SupplySpark is fiscally sponsored by Hack Club, making your donation tax-deductible
+        where permitted by law.</p>
+      <a class="button" href="https://hcb.hackclub.com/donations/start/supplyspark" target="_blank"
+        rel="noopener">Donate Through Hack Club</a>
+    </div>
+  </section>
 
-<footer>
+  <footer>
     <p>© 2026 SupplySpark. Helping students start the school year with confidence.</p>
     <p class="legal">
       SupplySpark is fiscally sponsored by Hack Club, a registered 501(c)(3) nonprofit organization.
@@ -1917,20 +2155,6 @@
     }, { threshold: 0.35 });
     processPathEls.forEach(el => processPathObserver.observe(el));
 
-    // Bulletin board: swing cards in when the impact section scrolls into view
-    const bulletinCards = document.querySelectorAll('.bulletin-card');
-    if (bulletinCards.length) {
-      const bulletinObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('swing-visible');
-            bulletinObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.2 });
-      bulletinCards.forEach(card => bulletinObserver.observe(card));
-    }
-
     // Pencil-writing animation for the mission heading
     const missionWriting = document.getElementById('missionWriting');
     if (missionWriting) {
@@ -1960,7 +2184,7 @@
         const targetId = link.getAttribute('href');
         const target =
           targetId === '#impact'
-            ? document.querySelector('#impact .panel-cork')
+            ? document.querySelector('#impact .impact-inner')
             : document.querySelector('#mission .reveal');
         if (!target) return;
         e.preventDefault();
@@ -1990,4 +2214,5 @@
     navSections.forEach(sec => navObserver.observe(sec));
   </script>
 </body>
+
 </html>
