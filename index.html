@@ -820,6 +820,77 @@
       font-size: 52px;
     }
 
+
+    /* Sponsor recognition */
+    #sponsors {
+      max-width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    #sponsors .sponsors-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 70px 20px;
+    }
+
+    .sponsor-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 42px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+      padding: 38px;
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .sponsor-card:hover {
+      transform: translateY(-5px);
+      border-color: #2dd4bf;
+      box-shadow: 0 0 18px rgba(45,212,191,0.25), 0 12px 30px rgba(0,0,0,0.10);
+    }
+
+    .sponsor-logo {
+      display: block;
+      width: min(100%, 390px);
+      height: auto;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .sponsor-copy {
+      flex: 1 1 280px;
+      max-width: 440px;
+    }
+
+    .sponsor-copy .grant-amount {
+      display: inline-block;
+      margin: 12px 0;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: #ccfbf1;
+      color: #115e59;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .sponsor-copy p {
+      margin: 0 auto;
+      color: #475569;
+    }
+
+    @media (max-width: 700px) {
+      .sponsor-card {
+        padding: 24px;
+        gap: 22px;
+      }
+    }
+
     /* Getting Involved section: full-bleed grey background, like Process */
     #involved {
       max-width: 100%;
@@ -1291,6 +1362,7 @@
         <a class="nav-link" href="#mission">About Us</a>
         <a class="nav-link" href="#process">Process</a>
         <a class="nav-link" href="#impact">Impact</a>
+        <a class="nav-link" href="#sponsors">Sponsors</a>
         <a class="nav-link" href="#volunteer">Volunteer</a>
         <a class="nav-link" href="#contact">Contact</a>
       </div>
@@ -1559,7 +1631,7 @@
               <img src="delivery-photo.png" alt="Second Donation" style="object-position: center 25%;">
             </div>
             <div class="impact-bar-text">
-              <h3>SerenityKids</h3>
+              <h3>Life Steps Foundation</h3>
               <p>Delivered 7 Supply Kits</p>
             </div>
           </div>
@@ -1569,7 +1641,7 @@
               <img src="impact-photo3.jpeg" alt="Third Donation">
             </div>
             <div class="impact-bar-text">
-              <h3>Life Steps Foundation</h3>
+              <h3>Serenity Kids</h3>
               <p>Delivered 65 Supply Kits</p>
             </div>
           </div>
@@ -1595,6 +1667,28 @@
     </div>
   </section>
 
+
+  <section id="sponsors">
+    <div class="sponsors-inner reveal">
+      <h2>Thanks to Our <span style="color: var(--teal);">Sponsors</span></h2>
+      <div class="sponsor-card">
+        <img
+          class="sponsor-logo"
+          src="Jane_Goodalls_Roots_and_Shoots.png"
+          alt="Jane Goodall's Roots & Shoots"
+        >
+        <div class="sponsor-copy">
+          <h3>Jane Goodall's Roots &amp; Shoots</h3>
+          <div class="grant-amount">$750 Grant</div>
+          <p>
+            We are grateful to Jane Goodall's Roots &amp; Shoots for supporting
+            SupplySpark's mission. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="involved">
     <div class="panel panel-grey reveal">
       <div class="involved-inner">
@@ -1611,7 +1705,7 @@
           <div class="donation-note">
             Every dollar goes directly toward backpacks, notebooks, and classroom essentials for the
             kids we partner with — no overhead, no middleman. The $<span id="raisedInline">200</span> we've raised so far has already
-            gone straight into supplies for the 96 students we've served.
+            gone straight into supplies for the 204 students we've served.
           </div>
         </div>
 
